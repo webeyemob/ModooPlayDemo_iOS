@@ -10,6 +10,7 @@
 #import "UIView+Toast.h"
 #import "CustomPrivacyDialog.h"
 #import "NetworkTestViewController.h"
+#import "AntiAddictionViewController.h"
 @import PrivacyPolicy;
 @import TGCenter;
 
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *userAgreement;
 @property (strong, nonatomic) IBOutlet UIButton *privacyPolicy;
 @property (strong, nonatomic) IBOutlet UIButton *clearCache;
+@property (strong, nonatomic) IBOutlet UIButton *antiAddiction;
 @end
 
 @implementation MainViewController
@@ -111,6 +113,13 @@
 // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
 - (IBAction)clearCache:(id)sender {
     [TGCenterSdk.sharedInstance clearCache];
+}
+
+// 游戏防沉迷
+- (IBAction)antiAddiction:(id)sender {
+    AntiAddictionViewController *vc = [[AntiAddictionViewController alloc] init];
+    vc.modalPresentationStyle = 0;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

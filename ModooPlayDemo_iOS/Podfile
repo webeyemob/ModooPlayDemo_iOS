@@ -27,7 +27,7 @@ target 'ModooPlayDemo_iOS' do
   
   # 深度转化
   pod 'TGCRangersAppLog'
-  pod 'RangersAppLog', '5.4.2',:subspecs => ['Core','Log','Unique']
+  pod 'RangersAppLog', '5.4.2', :subspecs => ['Core','Log','Unique']
   
   # 广告聚合
   pod 'TGCTaurusXAds'
@@ -45,5 +45,8 @@ target 'ModooPlayDemo_iOS' do
   pod 'TaurusXAdMediation_GDT'
   pod 'TaurusXAd_Mobrain_KuaiShou'
   pod 'TaurusXAdMediation_KuaiShou'
+  
+  # 游戏防沉迷
+  pod 'AntiAddictionKit'
   
 end

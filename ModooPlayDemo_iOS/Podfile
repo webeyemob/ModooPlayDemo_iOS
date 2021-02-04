@@ -2,6 +2,7 @@
 platform :ios, '9.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
+# RangersAppLog Source
 source 'https://github.com/bytedance/cocoapods_sdk_source_repo.git'
 
 target 'ModooPlayDemo_iOS' do

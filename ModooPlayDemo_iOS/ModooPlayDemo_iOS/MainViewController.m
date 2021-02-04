@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *adTest;
 @property (strong, nonatomic) IBOutlet UIButton *userAgreement;
 @property (strong, nonatomic) IBOutlet UIButton *privacyPolicy;
+@property (strong, nonatomic) IBOutlet UIButton *clearCache;
 @end
 
 @implementation MainViewController
@@ -105,6 +106,11 @@
 - (IBAction)showPrivacyPolicy:(id)sender {
     PrivacyPolicyHelper *helper = [[PrivacyPolicyHelper alloc] init];
     [helper jumpToPrivacyPolicy];
+}
+
+// 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
+- (IBAction)clearCache:(id)sender {
+    [TGCenterSdk.sharedInstance clearCache];
 }
 
 @end

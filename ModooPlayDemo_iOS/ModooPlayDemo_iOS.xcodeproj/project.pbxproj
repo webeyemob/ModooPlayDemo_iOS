@@ -19,6 +19,7 @@
 		834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 834DBA2A25AF33270000CB60 /* UIView+Toast.m */; };
 		83897FB325B3F2F100C87454 /* CustomPrivacyDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 834DBA3325AF33F80000CB60 /* CustomPrivacyDialog.m */; };
 		83897FB525B3F32900C87454 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83897FB425B3F32900C87454 /* UIKit.framework */; };
+		838AAD9D25F107A00069B560 /* TGCWeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838AAD9C25F107A00069B560 /* TGCWeChat.framework */; };
 		83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A981F425CC272000D8C18B /* AntiAddictionViewController.m */; };
 		83A981F725CC272000D8C18B /* AntiAddictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A981F525CC272000D8C18B /* AntiAddictionViewController.xib */; };
 		83A981F925CCDD9000D8C18B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A981F825CCDD9000D8C18B /* libc++.tbd */; };
@@ -74,6 +75,7 @@
 		834DBA3325AF33F80000CB60 /* CustomPrivacyDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPrivacyDialog.m; sourceTree = "<group>"; };
 		834DBA3425AF33F80000CB60 /* CustomPrivacyDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPrivacyDialog.h; sourceTree = "<group>"; };
 		83897FB425B3F32900C87454 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		838AAD9C25F107A00069B560 /* TGCWeChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCWeChat.framework; path = Fmk/TGCWeChat.framework; sourceTree = "<group>"; };
 		83972ECA25B01A9100AA8DEE /* TGCEmbed.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCEmbed.framework; path = Fmk/TGCEmbed.framework; sourceTree = "<group>"; };
 		83A981F325CC272000D8C18B /* AntiAddictionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AntiAddictionViewController.h; sourceTree = "<group>"; };
 		83A981F425CC272000D8C18B /* AntiAddictionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntiAddictionViewController.m; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838AAD9D25F107A00069B560 /* TGCWeChat.framework in Frameworks */,
 				83A981F925CCDD9000D8C18B /* libc++.tbd in Frameworks */,
 				83897FB525B3F32900C87454 /* UIKit.framework in Frameworks */,
 				83D5D60325AEEB620050824E /* Foundation.framework in Frameworks */,
@@ -221,6 +224,7 @@
 		D1694AE9EC2173626C87B0F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				838AAD9C25F107A00069B560 /* TGCWeChat.framework */,
 				83A981F825CCDD9000D8C18B /* libc++.tbd */,
 				83897FB425B3F32900C87454 /* UIKit.framework */,
 				83076A7925B3EC9A007B5440 /* TGCenter.framework */,
@@ -530,9 +534,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4YN27W2S8;
+				DEVELOPMENT_TEAM = W4NFA7PGRX;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Fmk",
+				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,10 +564,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = M4YN27W2S8;
+				DEVELOPMENT_TEAM = W4NFA7PGRX;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Fmk",
+				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -49,4 +49,7 @@ target 'ModooPlayDemo_iOS' do
   # 游戏防沉迷
   pod 'AntiAddictionKit'
   
+  # 微信登录
+  pod 'TGCWeChat'
+  
 end

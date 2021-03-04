@@ -13,13 +13,16 @@
 #import "AntiAddictionViewController.h"
 @import PrivacyPolicy;
 @import TGCenter;
+@import TGCWeChat;
+#import "WXApi.h"
 
-@interface MainViewController ()
+@interface MainViewController () <TGCWeChatLoginDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *adTest;
 @property (strong, nonatomic) IBOutlet UIButton *userAgreement;
 @property (strong, nonatomic) IBOutlet UIButton *privacyPolicy;
 @property (strong, nonatomic) IBOutlet UIButton *clearCache;
 @property (strong, nonatomic) IBOutlet UIButton *antiAddiction;
+@property (strong, nonatomic) IBOutlet UIButton *weChatLogin;
 @end
 
 @implementation MainViewController
@@ -38,6 +41,10 @@
         // 或者：展示 App 根据产品风格自定义的对话框
         // [self showCustomPolicyDialog];
     }
+    
+    if (![WXApi isWXAppInstalled]) {
+        self.weChatLogin.hidden = YES;
+    }
 }
 
 /**
@@ -54,6 +61,8 @@
     initConfig.appsFlyerDevKey = @"appsFlyer_devKey";
     initConfig.rangersAppLogAppId = @"rangersAppLog_appId";
     initConfig.rangersAppLogAppName = @"rangersAppLog_appName";
+    initConfig.weChatAppId = @"weChat_appId";
+    initConfig.weChatUniversalLink = @"weChat_universalLink";
 
     [TGCenterSdk.sharedInstance initWithConfig:initConfig];
 }
@@ -121,5 +130,35 @@
     vc.modalPresentationStyle = 0;
     [self presentViewController:vc animated:YES completion:nil];
 }
+
+// 微信登录
+- (IBAction)weChatLogin:(id)sender {
+    // 设置微信登录回调
+    TGCWeChatHelper.sharedInstance.loginDelegate = self;
+    [TGCWeChatHelper.sharedInstance login:self];
+}
+
+#pragma mark - TGCWeChatLoginDelegate
+- (void)tgcWeChatLogin_Success:(NSString *)code {
+    // 登录成功
+    [self.view makeToast:[NSString stringWithFormat:@"微信登录：成功，code: %@", code]
+                duration:2.0
+                position:CSToastPositionCenter];
+}
+
+- (void)tgcWeChatLogin_Fail:(NSString *)msg {
+    // 登录失败
+    [self.view makeToast:[NSString stringWithFormat:@"微信登录：失败，msg: %@", msg]
+                duration:2.0
+                position:CSToastPositionCenter];
+}
+
+- (void)tgcWeChatLogin_Cancel:(NSString *)msg {
+    // 取消登录
+    [self.view makeToast:[NSString stringWithFormat:@"微信登录：取消，msg: %@", msg]
+                duration:2.0
+                position:CSToastPositionCenter];
+}
+#pragma mark - TGCWeChatLoginDelegate
 
 @end

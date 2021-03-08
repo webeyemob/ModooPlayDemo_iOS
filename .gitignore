@@ -9,5 +9,5 @@ ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcworkspace
 ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcodeproj/xcuserdata
 ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcodeproj/project.xcworkspace/xcuserdata
 
-ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcodeproj/xcuserdata/wanghang.xcuserdatad/xcschemes/xcschememanagement.plist
-ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcodeproj/xcuserdata/hang.wang.xcuserdatad/xcschemes/xcschememanagement.plist
+ModooPlayDemo_iOS/ModooPlayDemo_iOS.xcodeproj/xcuserdata/*
+ModooPlayDemo_iOS/SYBuild/*

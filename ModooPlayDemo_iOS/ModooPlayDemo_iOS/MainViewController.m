@@ -11,6 +11,7 @@
 #import "CustomPrivacyDialog.h"
 #import "NetworkTestViewController.h"
 #import "AntiAddictionViewController.h"
+#import "RichOXViewController.h"
 @import PrivacyPolicy;
 @import TGCenter;
 @import TGCWeChat;
@@ -23,6 +24,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *clearCache;
 @property (strong, nonatomic) IBOutlet UIButton *antiAddiction;
 @property (strong, nonatomic) IBOutlet UIButton *weChatLogin;
+
+@property (weak, nonatomic) IBOutlet UIButton *richOXBtn;
+
 @end
 
 @implementation MainViewController
@@ -137,6 +141,13 @@
     TGCWeChatHelper.sharedInstance.loginDelegate = self;
     [TGCWeChatHelper.sharedInstance login:self];
 }
+
+- (IBAction)richOXTest:(id)sender {
+   RichOXViewController *vc = [[RichOXViewController alloc] init];
+    vc.modalPresentationStyle = 0;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 
 #pragma mark - TGCWeChatLoginDelegate
 - (void)tgcWeChatLogin_Success:(NSString *)code {

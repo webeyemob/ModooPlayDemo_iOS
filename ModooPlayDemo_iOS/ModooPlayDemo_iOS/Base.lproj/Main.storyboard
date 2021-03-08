@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -70,9 +70,18 @@
                                     <action selector="weChatLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXl-eh-B34"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-Co-4gl">
+                                <rect key="frame" x="0.0" y="452" width="414" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="RichOX"/>
+                                <connections>
+                                    <action selector="richOXTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qYM-KB-g8O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="lGP-Co-4gl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4jr-3F-Hbf"/>
                             <constraint firstItem="9I2-JO-qM5" firstAttribute="top" secondItem="lh8-db-bPg" secondAttribute="bottom" constant="50" id="5Xo-J2-zAg"/>
                             <constraint firstItem="lh8-db-bPg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Czn-fV-SHr"/>
                             <constraint firstItem="3a2-SI-H4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DDt-4c-j5a"/>
@@ -87,9 +96,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lh8-db-bPg" secondAttribute="trailing" id="dpC-9k-MYE"/>
                             <constraint firstItem="S5y-TP-15y" firstAttribute="top" secondItem="9I2-JO-qM5" secondAttribute="bottom" id="fwh-Na-DfL"/>
                             <constraint firstItem="lh8-db-bPg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="kJN-01-Gm6"/>
+                            <constraint firstItem="lGP-Co-4gl" firstAttribute="top" secondItem="DU6-UD-WcP" secondAttribute="bottom" id="lcv-hx-0Xg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DU6-UD-WcP" secondAttribute="trailing" id="mE7-Dn-BQY"/>
                             <constraint firstItem="S5y-TP-15y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oWj-DC-m7G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S5y-TP-15y" secondAttribute="trailing" id="plf-3k-7q6"/>
+                            <constraint firstItem="lGP-Co-4gl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qoS-e0-c3e"/>
                             <constraint firstItem="DU6-UD-WcP" firstAttribute="top" secondItem="noI-Lb-GLr" secondAttribute="bottom" id="uiw-Q0-V3r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="noI-Lb-GLr" secondAttribute="trailing" id="vQG-40-xkA"/>
                             <constraint firstItem="noI-Lb-GLr" firstAttribute="top" secondItem="3a2-SI-H4h" secondAttribute="bottom" id="x7g-1a-aE3"/>
@@ -102,6 +113,7 @@
                         <outlet property="antiAddiction" destination="noI-Lb-GLr" id="gL8-Mf-fwi"/>
                         <outlet property="clearCache" destination="3a2-SI-H4h" id="Fe2-lC-6YX"/>
                         <outlet property="privacyPolicy" destination="qRx-4F-StG" id="a4Q-IG-Ubx"/>
+                        <outlet property="richOXBtn" destination="lGP-Co-4gl" id="if9-dU-iw6"/>
                         <outlet property="userAgreement" destination="S5y-TP-15y" id="hbn-3t-4Jg"/>
                         <outlet property="weChatLogin" destination="DU6-UD-WcP" id="zz4-3W-5nO"/>
                     </connections>

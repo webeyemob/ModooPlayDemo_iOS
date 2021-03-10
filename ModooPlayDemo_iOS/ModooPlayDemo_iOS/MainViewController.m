@@ -16,6 +16,7 @@
 @import TGCenter;
 @import TGCWeChat;
 #import "WXApi.h"
+@import EmbededSdk;
 
 @interface MainViewController () <TGCWeChatLoginDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *adTest;
@@ -67,6 +68,8 @@
     initConfig.rangersAppLogAppName = @"rangersAppLog_appName";
     initConfig.weChatAppId = @"weChat_appId";
     initConfig.weChatUniversalLink = @"weChat_universalLink";
+    
+    [Embeded setLogEnable];
 
     [TGCenterSdk.sharedInstance initWithConfig:initConfig];
 }

@@ -15,14 +15,18 @@
 @import TGCenter;
 @import TGCWeChat;
 #import "WXApi.h"
+@import TGCUdesk;
 
 @interface MainViewController () <TGCWeChatLoginDelegate>
+
 @property (strong, nonatomic) IBOutlet UIButton *adTest;
 @property (strong, nonatomic) IBOutlet UIButton *userAgreement;
 @property (strong, nonatomic) IBOutlet UIButton *privacyPolicy;
 @property (strong, nonatomic) IBOutlet UIButton *clearCache;
 @property (strong, nonatomic) IBOutlet UIButton *antiAddiction;
 @property (strong, nonatomic) IBOutlet UIButton *weChatLogin;
+@property (strong, nonatomic) IBOutlet UIButton *udesk;
+
 @end
 
 @implementation MainViewController
@@ -42,14 +46,12 @@
         // [self showCustomPolicyDialog];
     }
     
-    if (![WXApi isWXAppInstalled]) {
-        self.weChatLogin.hidden = YES;
-    }
+    self.weChatLogin.enabled = [WXApi isWXAppInstalled];
 }
 
 /**
 * 初始化 ModooPlay，必须在用户同意《用户协议和隐私政策》之后才可以调用。
-* init 方法内部初始化 Umeng、AppsFlyer、RangersAppLog、TaurusX，
+* init 方法内部初始化 Umeng、AppsFlyer、RangersAppLog、TaurusX、WeChat、Udesk，
 * 如果应用之前有初始化上述 SDK 的逻辑，请先移除，统一由 ModooPlay 初始化。
 */
 - (void)initModooPlay {
@@ -59,10 +61,16 @@
     initConfig.appleAppID = @"appleAppID";
     initConfig.umengAppKey = @"umeng_AppKey";
     initConfig.appsFlyerDevKey = @"appsFlyer_devKey";
+    
     initConfig.rangersAppLogAppId = @"rangersAppLog_appId";
     initConfig.rangersAppLogAppName = @"rangersAppLog_appName";
+    
     initConfig.weChatAppId = @"weChat_appId";
     initConfig.weChatUniversalLink = @"weChat_universalLink";
+    
+    initConfig.udeskDomain = @"udesk_domain";
+    initConfig.udeskAppKey = @"udesk_appKey";
+    initConfig.udeskAppId = @"udesk_appId";
 
     [TGCenterSdk.sharedInstance initWithConfig:initConfig];
 }
@@ -160,5 +168,10 @@
                 position:CSToastPositionCenter];
 }
 #pragma mark - TGCWeChatLoginDelegate
+
+// 客服系统
+- (IBAction)udesk:(id)sender {
+    [TGCUdeskHelper presentUdeskInViewController:self];
+}
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69DEF6919F78E3FF6B426308 /* Pods_ModooPlayDemo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6AB3064654C02828C82242 /* Pods_ModooPlayDemo_iOS.framework */; };
+		8309B51925FF69A4003C3297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D60225AEEB620050824E /* Foundation.framework */; };
 		83381EC025B45EC500C19F5E /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83381EB925B45EC500C19F5E /* SplashViewController.m */; };
 		83381EC125B45EC500C19F5E /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83381EBA25B45EC500C19F5E /* InterstitialViewController.m */; };
 		83381EC225B45EC500C19F5E /* FeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83381EBB25B45EC500C19F5E /* FeedListViewController.m */; };
@@ -19,7 +20,6 @@
 		834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 834DBA2A25AF33270000CB60 /* UIView+Toast.m */; };
 		83897FB325B3F2F100C87454 /* CustomPrivacyDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 834DBA3325AF33F80000CB60 /* CustomPrivacyDialog.m */; };
 		83897FB525B3F32900C87454 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83897FB425B3F32900C87454 /* UIKit.framework */; };
-		838AAD9D25F107A00069B560 /* TGCWeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838AAD9C25F107A00069B560 /* TGCWeChat.framework */; };
 		83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A981F425CC272000D8C18B /* AntiAddictionViewController.m */; };
 		83A981F725CC272000D8C18B /* AntiAddictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A981F525CC272000D8C18B /* AntiAddictionViewController.xib */; };
 		83A981F925CCDD9000D8C18B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A981F825CCDD9000D8C18B /* libc++.tbd */; };
@@ -29,7 +29,6 @@
 		83D5D5F225AEEAA40050824E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D5F125AEEAA40050824E /* Assets.xcassets */; };
 		83D5D5F525AEEAA40050824E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D5F325AEEAA40050824E /* LaunchScreen.storyboard */; };
 		83D5D5F825AEEAA40050824E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D5F725AEEAA40050824E /* main.m */; };
-		83D5D60325AEEB620050824E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D60225AEEB620050824E /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +94,7 @@
 		83D5D5FE25AEEB240050824E /* TGCUmeng.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCUmeng.framework; path = Fmk/TGCUmeng.framework; sourceTree = "<group>"; };
 		83D5D5FF25AEEB240050824E /* TGCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCenter.framework; path = Fmk/TGCenter.framework; sourceTree = "<group>"; };
 		83D5D60225AEEB620050824E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		83E9B94125FF73730075C013 /* TGCUdesk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TGCUdesk.framework; sourceTree = "<group>"; };
 		C0FD3F519F94C1B9BA210CDC /* Pods-ModooPlayDemo_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.release.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,10 +103,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				838AAD9D25F107A00069B560 /* TGCWeChat.framework in Frameworks */,
+				8309B51925FF69A4003C3297 /* Foundation.framework in Frameworks */,
 				83A981F925CCDD9000D8C18B /* libc++.tbd in Frameworks */,
 				83897FB525B3F32900C87454 /* UIKit.framework in Frameworks */,
-				83D5D60325AEEB620050824E /* Foundation.framework in Frameworks */,
 				69DEF6919F78E3FF6B426308 /* Pods_ModooPlayDemo_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +223,7 @@
 		D1694AE9EC2173626C87B0F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83E9B94125FF73730075C013 /* TGCUdesk.framework */,
 				838AAD9C25F107A00069B560 /* TGCWeChat.framework */,
 				83A981F825CCDD9000D8C18B /* libc++.tbd */,
 				83897FB425B3F32900C87454 /* UIKit.framework */,
@@ -539,6 +539,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fmk",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -550,7 +551,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.modooplay.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -567,9 +567,11 @@
 				DEVELOPMENT_TEAM = W4NFA7PGRX;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fmk",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -577,11 +579,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.modooplay.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 arm64 arm64e";
 			};
 			name = Release;
 		};

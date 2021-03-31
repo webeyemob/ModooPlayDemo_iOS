@@ -70,18 +70,28 @@
                                     <action selector="weChatLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXl-eh-B34"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYl-mn-9Ry">
+                                <rect key="frame" x="0.0" y="452" width="414" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="客服系统"/>
+                                <connections>
+                                    <action selector="udesk:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o65-gV-5pT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9I2-JO-qM5" firstAttribute="top" secondItem="lh8-db-bPg" secondAttribute="bottom" constant="50" id="5Xo-J2-zAg"/>
                             <constraint firstItem="lh8-db-bPg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Czn-fV-SHr"/>
                             <constraint firstItem="3a2-SI-H4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DDt-4c-j5a"/>
+                            <constraint firstItem="wYl-mn-9Ry" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dic-FY-2uz"/>
                             <constraint firstItem="qRx-4F-StG" firstAttribute="top" secondItem="S5y-TP-15y" secondAttribute="bottom" id="Esw-dc-CVH"/>
                             <constraint firstItem="qRx-4F-StG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NQf-8S-ccu"/>
                             <constraint firstItem="3a2-SI-H4h" firstAttribute="top" secondItem="qRx-4F-StG" secondAttribute="bottom" id="NWN-cq-zum"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9I2-JO-qM5" secondAttribute="trailing" id="P0w-8C-AIz"/>
                             <constraint firstItem="9I2-JO-qM5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vlb-zD-e9E"/>
                             <constraint firstItem="DU6-UD-WcP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XaT-OT-eWW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wYl-mn-9Ry" secondAttribute="trailing" id="YAK-Df-y4Y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3a2-SI-H4h" secondAttribute="trailing" id="aWT-hn-0rl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qRx-4F-StG" secondAttribute="trailing" id="ak1-SQ-ZKY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lh8-db-bPg" secondAttribute="trailing" id="dpC-9k-MYE"/>
@@ -90,6 +100,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DU6-UD-WcP" secondAttribute="trailing" id="mE7-Dn-BQY"/>
                             <constraint firstItem="S5y-TP-15y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oWj-DC-m7G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S5y-TP-15y" secondAttribute="trailing" id="plf-3k-7q6"/>
+                            <constraint firstItem="wYl-mn-9Ry" firstAttribute="top" secondItem="DU6-UD-WcP" secondAttribute="bottom" id="uOo-tx-VzN"/>
                             <constraint firstItem="DU6-UD-WcP" firstAttribute="top" secondItem="noI-Lb-GLr" secondAttribute="bottom" id="uiw-Q0-V3r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="noI-Lb-GLr" secondAttribute="trailing" id="vQG-40-xkA"/>
                             <constraint firstItem="noI-Lb-GLr" firstAttribute="top" secondItem="3a2-SI-H4h" secondAttribute="bottom" id="x7g-1a-aE3"/>
@@ -102,6 +113,7 @@
                         <outlet property="antiAddiction" destination="noI-Lb-GLr" id="gL8-Mf-fwi"/>
                         <outlet property="clearCache" destination="3a2-SI-H4h" id="Fe2-lC-6YX"/>
                         <outlet property="privacyPolicy" destination="qRx-4F-StG" id="a4Q-IG-Ubx"/>
+                        <outlet property="udesk" destination="wYl-mn-9Ry" id="9ME-wk-okS"/>
                         <outlet property="userAgreement" destination="S5y-TP-15y" id="hbn-3t-4Jg"/>
                         <outlet property="weChatLogin" destination="DU6-UD-WcP" id="zz4-3W-5nO"/>
                     </connections>

@@ -47,7 +47,7 @@ target 'ModooPlayDemo_iOS' do
   pod 'TaurusXAdMediation_KuaiShou'
   
   # 游戏防沉迷
-  pod 'AntiAddictionKit'
+  pod 'AntiAddiction'
   
   # 微信登录
   pod 'TGCWeChat'

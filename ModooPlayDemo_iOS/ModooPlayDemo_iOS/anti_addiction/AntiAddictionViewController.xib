@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AntiAddictionViewController">
             <connections>
-                <outlet property="back" destination="Se4-Av-xbG" id="GH1-Fj-lFl"/>
-                <outlet property="chat" destination="5Um-Hd-QGm" id="VP4-Nw-x59"/>
-                <outlet property="login" destination="E7Z-PQ-hfR" id="Z2H-dk-OKd"/>
-                <outlet property="logout" destination="IbO-XQ-9Qf" id="r8z-t8-mdz"/>
-                <outlet property="openRealName" destination="h5w-ha-TeE" id="M5M-jk-05G"/>
-                <outlet property="pay" destination="i2q-PC-S1D" id="h86-zg-Cus"/>
+                <outlet property="backBtn" destination="Se4-Av-xbG" id="YV1-np-Jcq"/>
+                <outlet property="logOutBtn" destination="h5w-ha-TeE" id="CYe-PA-8Xs"/>
+                <outlet property="realNameBtn" destination="E7Z-PQ-hfR" id="PSd-0u-CDU"/>
+                <outlet property="realNamePageBtn" destination="IbO-XQ-9Qf" id="V1b-G8-fnn"/>
+                <outlet property="timeLimitBtn" destination="i2q-PC-S1D" id="TTn-Ky-FHR"/>
+                <outlet property="userBtn" destination="5Um-Hd-QGm" id="YOJ-Dd-C96"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,67 +25,65 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7Z-PQ-hfR">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7Z-PQ-hfR">
                     <rect key="frame" x="0.0" y="114" width="414" height="54"/>
                     <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <state key="normal" title="登录"/>
+                    <state key="normal" title="打开实名认证"/>
                     <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="eMc-Of-eOx"/>
+                        <action selector="doRealName:" destination="-1" eventType="touchUpInside" id="KVt-Hf-WQ5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se4-Av-xbG">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se4-Av-xbG">
                     <rect key="frame" x="0.0" y="44" width="64" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="返回">
-                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" systemColor="labelColor"/>
                     </state>
                     <connections>
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="dtN-PG-EZY"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbO-XQ-9Qf">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbO-XQ-9Qf">
                     <rect key="frame" x="0.0" y="168" width="414" height="54"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <state key="normal" title="自定义实名页面"/>
+                    <connections>
+                        <action selector="openRealNameDialog:" destination="-1" eventType="touchUpInside" id="joL-ez-KSO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-PC-S1D">
+                    <rect key="frame" x="0.0" y="222" width="414" height="54"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <state key="normal" title="自定义提示弹窗"/>
+                    <connections>
+                        <action selector="timeLimitPop:" destination="-1" eventType="touchUpInside" id="HxS-Na-hIP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Um-Hd-QGm">
+                    <rect key="frame" x="0.0" y="276" width="414" height="54"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <state key="normal" title="获取用户信息"/>
+                    <connections>
+                        <action selector="getUserInfo:" destination="-1" eventType="touchUpInside" id="roh-A8-lUe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5w-ha-TeE">
+                    <rect key="frame" x="0.0" y="330" width="414" height="54"/>
                     <fontDescription key="fontDescription" type="system" pointSize="35"/>
                     <state key="normal" title="登出"/>
                     <connections>
-                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="Jvt-B3-cCd"/>
+                        <action selector="logOut:" destination="-1" eventType="touchUpInside" id="csT-nR-JeZ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2q-PC-S1D">
-                    <rect key="frame" x="0.0" y="222" width="414" height="54"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <state key="normal" title="支付"/>
-                    <connections>
-                        <action selector="pay:" destination="-1" eventType="touchUpInside" id="zae-kD-PVl"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Um-Hd-QGm">
-                    <rect key="frame" x="0.0" y="276" width="414" height="54"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <state key="normal" title="聊天"/>
-                    <connections>
-                        <action selector="chat:" destination="-1" eventType="touchUpInside" id="egu-K3-mKU"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5w-ha-TeE">
-                    <rect key="frame" x="0.0" y="330" width="414" height="54"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <state key="normal" title="打开实名认证"/>
-                    <connections>
-                        <action selector="openRealName:" destination="-1" eventType="touchUpInside" id="CWW-nv-2cj"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-ye-U1o">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-ye-U1o">
                     <rect key="frame" x="0.0" y="48" width="414" height="66"/>
                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                     <state key="normal" title="Anit Addiction">
-                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" systemColor="labelColor"/>
                     </state>
-                    <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="I33-Dm-JTV"/>
-                    </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="h5w-ha-TeE" firstAttribute="top" secondItem="5Um-Hd-QGm" secondAttribute="bottom" id="0k3-JL-Nwx"/>
@@ -108,8 +107,12 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="5Um-Hd-QGm" secondAttribute="trailing" id="rD2-GR-6ht"/>
                 <constraint firstItem="5Um-Hd-QGm" firstAttribute="top" secondItem="i2q-PC-S1D" secondAttribute="bottom" id="uhs-sn-X2g"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="135.15625" y="137.109375"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

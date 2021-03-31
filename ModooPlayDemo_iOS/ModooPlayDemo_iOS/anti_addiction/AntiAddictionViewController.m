@@ -64,12 +64,13 @@
         [self.view addSubview:self.popView];
         
         __weak typeof(self) weakSelf = self;
+        __block AntiAddictionViewController *strongBlock = self;
         
         [self.popView setClickCallBack:^(NSString *name, NSString *idNumber) {
             if (name == nil || [name length] < 2 || idNumber == nil || [idNumber length] != 18) {
                 [weakSelf logAndToast:@"real name input error " message:@"real name input error "];
             } else {
-                [AntiAddictionSdk realName:name idNumber:idNumber delegate:weakSelf];
+                [AntiAddictionSdk realName:name idNumber:idNumber delegate:strongBlock];
                 weakSelf.popView.hidden = YES;
             }
         }];

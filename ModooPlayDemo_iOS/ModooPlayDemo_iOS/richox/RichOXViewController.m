@@ -239,7 +239,7 @@
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:YES completion:nil];
     } else if ([testItem isEqualToString:@"激励任务记录查询"]) {
-        [RichOXMission missionQuary:nil days:1 pageSize:0 pageIndex:0 success:^(RichOXMissionQueryResult *result) {
+        [RichOXMission getMissionRecord:nil days:1 pageSize:0 pageIndex:0 success:^(RichOXMissionQueryResult *result) {
              NSLog(@"*******missionQuary测试成功:  result:%@", [result description]);
         } failure:^(NSError *error){
              [self toastFailureInfo:@"missionQuary" error:error];
@@ -270,7 +270,7 @@
              [self toastFailureInfo:@"requestWithdraw" error:error];
         }];
     } else if ([testItem isEqualToString:@"微信提现"]) {
-        [RichOXWithdraw requestWXPay:WXWITHDRAW_TEST_MISSION_ID payRemark:@"测试微信提现请求" comment:nil  success:^(RichOXWithdrawResult *result) {
+        [RichOXWithdraw requestWeChatPay:WXWITHDRAW_TEST_MISSION_ID payRemark:@"测试微信提现请求" comment:nil  success:^(RichOXWithdrawResult *result) {
              NSLog(@"*******requestWXPay测试成功: result: %@", [result description]);
         } failure:^(NSError *error){
              [self toastFailureInfo:@"requestWXPay" error:error];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143D266826132E6D00F3F91A /* RealNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143D266726132E6D00F3F91A /* RealNameView.m */; };
 		14B1D3A025F5D07F00E4C156 /* RichOXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B1D39E25F5D07F00E4C156 /* RichOXViewController.m */; };
 		14B1D3A325F5D60600E4C156 /* RichOXActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B1D3A225F5D60600E4C156 /* RichOXActivityViewController.m */; };
 		14B1D3A625F5DAA900E4C156 /* RichOXShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B1D3A425F5DAA800E4C156 /* RichOXShareViewController.m */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		030AF96E4A2EAF4D6B442698 /* Pods-ModooPlayDemo_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.debug.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		143D266626132E6D00F3F91A /* RealNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealNameView.h; sourceTree = "<group>"; };
+		143D266726132E6D00F3F91A /* RealNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealNameView.m; sourceTree = "<group>"; };
 		14B1D39E25F5D07F00E4C156 /* RichOXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXViewController.m; sourceTree = "<group>"; };
 		14B1D39F25F5D07F00E4C156 /* RichOXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXViewController.h; sourceTree = "<group>"; };
 		14B1D3A125F5D60600E4C156 /* RichOXActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXActivityViewController.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 		830BA83925CE54B9008D5B23 /* anti_addiction */ = {
 			isa = PBXGroup;
 			children = (
+				143D266626132E6D00F3F91A /* RealNameView.h */,
+				143D266726132E6D00F3F91A /* RealNameView.m */,
 				83A981F325CC272000D8C18B /* AntiAddictionViewController.h */,
 				83A981F425CC272000D8C18B /* AntiAddictionViewController.m */,
 				83A981F525CC272000D8C18B /* AntiAddictionViewController.xib */,
@@ -504,6 +509,7 @@
 				83381EC125B45EC500C19F5E /* InterstitialViewController.m in Sources */,
 				83D5D5F825AEEAA40050824E /* main.m in Sources */,
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
+				143D266826132E6D00F3F91A /* RealNameView.m in Sources */,
 				14B1D3CD25F5DDD900E4C156 /* RichOXMissionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,
@@ -667,7 +673,7 @@
 					"$(PROJECT_DIR)/Fmk",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -699,12 +705,12 @@
 					"$(PROJECT_DIR)/Fmk",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.modooplay.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

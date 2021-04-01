@@ -55,6 +55,7 @@
 		83076A7525B3EC82007B5440 /* privacypolicy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = privacypolicy.framework; path = Fmk/PrivacyPolicy/PrivacyPolicy_1.1/privacypolicy.framework; sourceTree = "<group>"; };
 		83076A7725B3EC92007B5440 /* TGCEmbed.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCEmbed.framework; path = Fmk/TGCEmbed/TGCEmbed_1.0.1.0/TGCEmbed.framework; sourceTree = "<group>"; };
 		83076A7925B3EC9A007B5440 /* TGCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCenter.framework; path = Fmk/TGCenter/TGCenter_1.0/TGCenter.framework; sourceTree = "<group>"; };
+		8315522B261DDC2900096FA2 /* TGCAntiAddiction.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TGCAntiAddiction.framework; path = FMK/TGCAntiAddiction.framework; sourceTree = "<group>"; };
 		83381EA525B454EB00C19F5E /* macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macro.h; sourceTree = "<group>"; };
 		83381EB625B45EC500C19F5E /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		83381EB725B45EC500C19F5E /* FeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListViewController.h; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		D1694AE9EC2173626C87B0F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8315522B261DDC2900096FA2 /* TGCAntiAddiction.framework */,
 				83E9B94125FF73730075C013 /* TGCUdesk.framework */,
 				838AAD9C25F107A00069B560 /* TGCWeChat.framework */,
 				83A981F825CCDD9000D8C18B /* libc++.tbd */,
@@ -546,6 +548,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fmk",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FMK",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -578,6 +581,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fmk",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FMK",
 				);
 				INFOPLIST_FILE = ModooPlayDemo_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

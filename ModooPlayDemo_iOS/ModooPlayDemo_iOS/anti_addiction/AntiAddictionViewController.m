@@ -38,13 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    // 初始化
-    [self initAntiAddiction];
-}
-
-// 初始化 AntiAddiction
-- (void)initAntiAddiction {
-    [AntiAddictionSdk init:@"8c254db9-a6c2-4f3b-a75b-742abce6d961"];
+    
+    [AntiAddictionSdk setAutoShowTimeLimitPage:YES];
 }
 
 - (IBAction)back:(id)sender {
@@ -52,10 +47,8 @@
 }
 
 - (IBAction)doRealName:(id)sender {
-    [AntiAddictionSdk setAutoShowTimeLimitPage:YES];
     [AntiAddictionSdk realName:self];
 }
-
 
 - (IBAction)openRealNameDialog:(id)sender {
     if (self.popView == nil) {

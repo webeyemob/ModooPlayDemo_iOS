@@ -14,7 +14,7 @@
 #import "macro.h"
 #import "UIView+Toast.h"
 
-@interface RichOXNormalStrategyViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RichOXNormalStrategyViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSArray<RichOXNormalStrategyItem *> * strategyList;
 @property (nonatomic, strong) NSArray <RichOXNormalStrategyTask *>* taskList;
@@ -28,6 +28,19 @@
 @property (nonatomic, strong) NSString *lastId;
 
 @property (nonatomic, strong) RichOXNormalStrategyInstance *stragegyInstance;
+
+@property (nonatomic, strong) UIView *exchangeContainer;
+
+@property (nonatomic, strong) NSArray <RichOXNormalStrategyAssetStatus *>* currentAssets;
+
+@property (nonatomic, strong) NSArray <RichOXNormalStrategyAssetExchangeInfo *> *exchangeInfo;
+
+@property (nonatomic, strong) UIView *popView;
+@property (nonatomic, strong) UITextField *assetExchangeAmountText;
+@property (nonatomic, strong) UIButton *exchangeBtn;
+
+@property (nonatomic, strong) UILabel *exchangeLab;
+
 
 @end
 
@@ -173,26 +186,27 @@
         }
 
         [self.stragegyInstance syncList:^(RichOXNormalStrategySetting *setting) {
-            self.strategyList = setting.withdrawSetting;
-            self.taskList = setting.taskInfo.tasks;
-            [self.stragegyInstance syncCurrentPrize:^(int prizeValue) {
-                self.currentAmount = prizeValue;
+                self.strategyList = setting.withdrawSetting;
+                self.taskList = setting.taskInfo.tasks;
+                self.exchangeInfo = setting.taskInfo.exchangeInfos;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self addButtonToContainer];
-                    [self.progressTab reloadData];
+                    [self addExchangeView];
                 });
+                [self.stragegyInstance syncCurrentPrize:^(RichOXNormalStrategyStatus *status) {
+                    self.currentAssets = status.assetInfos;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.progressTab reloadData];
+                    });
+                } failure:^(NSError * _Nonnull error) {
+                    NSLog(@"sync stage strategy failed: %@", error);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.progressTab reloadData];
+                    });
+                }];
             } failure:^(NSError * _Nonnull error) {
-                NSLog(@"sync normal strategy failed: %@", error);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self addButtonToContainer];
-                    [self.progressTab reloadData];
-                });
+                NSLog(@"sync stage strategy failed: %@", error);
             }];
-        } failure:^(NSError * _Nonnull error) {
-            NSLog(@"sync normal strategy failed: %@", error);
-        }];
-        
-        
     } else {
         [self.view makeToast:@"请输入策略ID" duration:3.0 position:CSToastPositionCenter];
     }
@@ -200,6 +214,9 @@
 
 - (void)addButtonToContainer {
     NSUInteger count = [self.taskList count];
+    if (count > 5) {
+        count = 5;
+    }
     float width = (ScreenWidth - (count + 1) *30)/count;
     for (int i = 0; i < count; i++) {
         RichOXNormalStrategyTask *task = self.taskList[i];
@@ -207,22 +224,168 @@
         btn.tag = i;
         btn.frame = CGRectMake(30 + (30 + width)*i, 20, width, 60);
         btn.backgroundColor = [UIColor greenColor];
-        [btn setTitle:[NSString stringWithFormat:@"%d", task.prizeAmount] forState:UIControlStateNormal];
+        [btn setTitle:[NSString stringWithFormat:@"%.2f", task.prizeAmount] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(doTask:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonContainer addSubview:btn];
     }
 }
 
-- (void)doTask:(UIButton *)btn {
-    RichOXNormalStrategyTask *task = self.taskList[btn.tag];
-    int amount = task.prizeAmount;
-    if (task.prizeType == RICHOX_NR_PRIZE_TYPE_MAX) {
-        amount = amount * 0.5;
+- (void)addExchangeView {
+    NSUInteger count = [self.exchangeInfo count];
+    
+    if (count > 3) {
+        count = 3;
     }
     
-    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^{
-        self.currentAmount += amount;
+    float height = 120/count;
+    for (int i = 0; i < count; i++) {
+        RichOXNormalStrategyAssetExchangeInfo *exchangeInfo = self.exchangeInfo[i];
+        UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, i*height, ScreenWidth, height-1)];
+        [self.exchangeContainer addSubview:tempView];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, (i+1)*height, ScreenWidth, 1)];
+        line.backgroundColor = [UIColor lightGrayColor];
+        [self.exchangeContainer addSubview:line];
+        
+        UILabel *fromLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth/3, height-1)];
+        [fromLab setText:[NSString stringWithFormat:@"%.2f %@", exchangeInfo.fromPrizeAmount, exchangeInfo.fromAssetName]];
+        fromLab.textAlignment = NSTextAlignmentCenter;
+        [tempView addSubview:fromLab];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.tag = i;
+        btn.frame = CGRectMake(ScreenWidth/3, 0, ScreenWidth/3, height-1);
+        btn.backgroundColor = [UIColor blueColor];
+        [btn setTitle:@"兑换" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(doExchange:) forControlEvents:UIControlEventTouchUpInside];
+        [tempView addSubview:btn];
+        
+        UILabel *toLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth*2/3, 0, ScreenWidth/3, height-1)];
+        [toLab setText:[NSString stringWithFormat:@"%.2f %@", exchangeInfo.toPrizeAmount, exchangeInfo.toAssetName]];
+        toLab.textAlignment = NSTextAlignmentCenter;
+        [tempView addSubview:toLab];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return [self validateNumber:string];
+}
+
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length == 0) {
+            res = NO;
+            break;
+        }
+        i++;
+    }
+    return res;
+}
+
+- (void)doExchange:(UIButton *)btn {
+    if (self.popView == nil) {
+        self.popView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 180)];
+        self.popView.backgroundColor = [UIColor lightGrayColor];
+        self.popView.center = self.view.center;
+        self.popView.layer.cornerRadius = 13;
+        [self.view addSubview:self.popView];
+        
+        self.exchangeLab = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 60, 40)];
+        [self.popView addSubview:self.exchangeLab];
+        
+        self.assetExchangeAmountText = [[UITextField alloc] initWithFrame:CGRectMake(80, 40, 200, 40)];
+        self.assetExchangeAmountText.layer.cornerRadius = 10;
+        self.assetExchangeAmountText.borderStyle = UITextBorderStyleRoundedRect;
+        self.assetExchangeAmountText.delegate = self;
+        [self.popView addSubview:self.assetExchangeAmountText];
+        
+        self.exchangeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.exchangeBtn.frame = CGRectMake(0, 100, 150, 40);
+        [self.popView addSubview:self.exchangeBtn];
+        [self.exchangeBtn setTitle:@"兑换" forState:UIControlStateNormal];
+        [self.exchangeBtn addTarget:self action:@selector(toExchange) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        closeBtn.frame = CGRectMake(150, 100, 150, 40);
+        [self.popView addSubview:closeBtn];
+        [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+        [closeBtn addTarget:self action:@selector(closePopView) forControlEvents:UIControlEventTouchUpInside];
+    }
+    self.popView.hidden = NO;
+    
+    RichOXNormalStrategyAssetExchangeInfo *exchangeInfo = self.exchangeInfo[btn.tag];
+    
+    self.exchangeLab.text = exchangeInfo.fromAssetName;
+    
+    int maxAmount = 0;
+    
+    for (RichOXNormalStrategyAssetStatus *assetInfo in self.currentAssets) {
+        if ([assetInfo.name isEqualToString:exchangeInfo.fromAssetName]) {
+            maxAmount = assetInfo.amount;
+            break;
+        }
+    }
+    
+    self.exchangeBtn.tag = btn.tag;
+    
+    self.assetExchangeAmountText.text = [NSString stringWithFormat:@"%d", maxAmount];
+}
+
+- (void)closePopView {
+    self.popView.hidden = YES;
+}
+
+- (void)toExchange {
+    RichOXNormalStrategyAssetExchangeInfo *exchangeInfo = self.exchangeInfo[self.exchangeBtn.tag];
+    
+    float maxAmount = 0;
+    
+    for (RichOXNormalStrategyAssetStatus *assetInfo in self.currentAssets) {
+        if ([assetInfo.name isEqualToString:exchangeInfo.fromAssetName]) {
+            maxAmount = assetInfo.amount;
+            break;
+        }
+    }
+    
+    float amount = [self.assetExchangeAmountText.text floatValue];
+    if (amount > maxAmount) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view makeToast:@"asset not enought" duration:3.0 position:CSToastPositionCenter];
+        });
+    } else {
+        [self.stragegyInstance exchangeAsset:exchangeInfo.exchangeId coin:amount success:^(RichOXNormalStrategyExchangeResult * _Nonnull result) {
+            self.currentAssets = result.assetStatus;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.progressTab reloadData];
+            });
+        } failure:^(NSError * _Nonnull error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:@"exchange fail" duration:3.0 position:CSToastPositionCenter];
+            });
+        }];
+        
+        self.popView.hidden = YES;
+    }
+}
+
+
+
+- (void)doTask:(UIButton *)btn {
+    RichOXNormalStrategyTask *task = self.taskList[btn.tag];
+    float amount = task.prizeAmount;
+    if (task.prizeType == RICHOX_NR_PRIZE_TYPE_MAX) {
+        int x=arc4random() % 5 +1;
+        amount = amount * x / 5;
+    }
+        
+    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^(RichOXNormalStrategyTaskResult *result) {
+        self.currentAssets = result.assetStatus;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.progressTab reloadData];
         });
@@ -233,41 +396,85 @@
 
 #pragma mark <UITableViewDelegate>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"资产数量";
+    } else {
+        return @"提现进度";
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.strategyList == nil) {
-        return 0;
+    if (section == 0) {
+        if (self.currentAssets == nil) {
+            return 0;
+        } else {
+            return [self.currentAssets count];
+        }
+    } else {
+        if (self.strategyList == nil) {
+            return 0;
+        }
+        return [self.strategyList count];
     }
-    return [self.strategyList count];
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    if (indexPath.section == 0) {
+        return 40;
+    } else {
+        return 100;
+    }
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"pregressCellIdentifier";
-    StrategyRProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[StrategyRProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    RichOXNormalStrategyItem *item = self.strategyList[indexPath.row];
-    
-    [cell setName:item.packageId progress:(double)(self.currentAmount)/item.costAsset packetId:item.packageId block:^() {
-            RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"通用红包提现"];
-            [self.stragegyInstance withdraw:item.packageId info:info success:^{
-                
-            } failure:^(NSError * _Nonnull error) {
-                NSLog(@"withdraw failed: %@", error);
+    if (indexPath.section == 0) {
+        static NSString *assetIdentifier = @"assetCellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:assetIdentifier];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:assetIdentifier];
+        }
+            
+        RichOXNormalStrategyAssetStatus *assetInfo = self.currentAssets[indexPath.row];
+            
+        cell.textLabel.text = [NSString stringWithFormat:@"%@: %.2f", assetInfo.name, assetInfo.amount ];
+        return cell;
+    } else {
+        static NSString *cellIdentifier = @"pregressCellIdentifier";
+        StrategyRProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[StrategyRProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+            
+        RichOXNormalStrategyItem *item = self.strategyList[indexPath.row];
+            
+        double progress = 0;
+            
+        for (RichOXNormalStrategyAssetStatus *assetInfo in self.currentAssets) {
+            if ([assetInfo.name isEqualToString:item.assetName]) {
+                progress = (double)assetInfo.amount / item.costAsset;
+                break;
+            }
+        }
+            
+        [cell setName:item.packageId progress:progress packetId:item.packageId block:^() {
+                RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"通用红包提现"];
+                [self.stragegyInstance withdraw:item.packageId info:info success:^(RichOXNormalStrategyWithdrawResult *result){
+                    self.currentAssets = result.assetStatus;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.progressTab reloadData];
+                    });
+                } failure:^(NSError * _Nonnull error) {
+                    NSLog(@"withdraw failed: %@", error);
+                }];
             }];
-        }];
-    
-    return cell;
+            
+        return cell;
+    }
 }
 
 @end

@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UITableView *progressTab;
 @property (nonatomic, strong) UIView *buttonContainer;
 
-@property (nonatomic) NSUInteger currentAmount;
+@property (nonatomic) float currentAmount;
 
 @property (nonatomic, strong) UITextField *stragegyIdText;
 @property (nonatomic, strong) NSString *lastId;
@@ -176,18 +176,17 @@
         [self.stragegyInstance syncList:^(RichOXStageStrategySetting *strategySetting) {
             self.strategyList = strategySetting.withdrawSetting;
             self.taskList = strategySetting.tasks;
-            [self.stragegyInstance syncCurrentPrize:^(int progressValue) {
-                self.currentAmount = progressValue;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self addButtonToContainer];
+                [self.progressTab reloadData];
+            });
+            [self.stragegyInstance syncCurrentPrize:^(RichOXStageStrategyStatus *status) {
+                self.currentAmount = status.progressValue;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self addButtonToContainer];
                     [self.progressTab reloadData];
                 });
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"sync stage strategy failed: %@", error);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self addButtonToContainer];
-                    [self.progressTab reloadData];
-                });
             }];
         } failure:^(NSError * _Nonnull error) {
             NSLog(@"sync stage strategy failed: %@", error);
@@ -206,7 +205,7 @@
         btn.tag = i;
         btn.frame = CGRectMake(30 + (30 + width)*i, 20, width, 60);
         btn.backgroundColor = [UIColor greenColor];
-        [btn setTitle:[NSString stringWithFormat:@"%d", task.prizeAmount] forState:UIControlStateNormal];
+        [btn setTitle:[NSString stringWithFormat:@"%.2f", task.prizeAmount] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(doTask:) forControlEvents:UIControlEventTouchUpInside];
         [self.buttonContainer addSubview:btn];
@@ -215,12 +214,12 @@
 
 - (void)doTask:(UIButton *)btn {
     RichOXStageStrategyTask *task = self.taskList[btn.tag];
-    int amount = task.prizeAmount;
+    float amount = task.prizeAmount;
     if (task.prizeType == RICHOX_SS_R_PRIZE_TYPE_MAX) {
         amount = amount * 0.5;
     }
     
-    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^{
+    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^(float deltaPrizeAmount, float totalPrizeAmount){
         self.currentAmount += amount;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.progressTab reloadData];
@@ -259,7 +258,7 @@
     
     [cell setName:item.packageId progress:(double)(self.currentAmount)/item.needPrize packetId:item.packageId block:^() {
             RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"阶梯红包提现"];
-            [self.stragegyInstance withdraw:item.packageId info:info success:^{
+        [self.stragegyInstance withdraw:item.packageId userTarget:10 info:info success:^{
                 
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"withdraw failed: %@", error);

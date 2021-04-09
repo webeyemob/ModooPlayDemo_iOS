@@ -18,7 +18,7 @@
 //#define WEBPAGE @"http://share.msgcarry.cn/share/openinstall_majiang.html"
 #define WEBPAGE @"https://app-lpljir.openinstall.io/page/lpljir/js-test/ios/3273384184743159982"
 
-@interface RichOXShareViewController () <RichOXFissionDelegate>
+@interface RichOXShareViewController ()
 
 @property (nonatomic, strong) UITextField *hostText;
 @property (nonatomic, strong) UITextField *pathText;
@@ -40,8 +40,6 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
-    
-    [[RichOXFission shareInstance] start:self];
     
     UIView *header = [[UIView alloc] init];
     header.backgroundColor = [UIColor whiteColor];
@@ -315,30 +313,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma  mark RichOXLinkDelegate
-- (void)getInstallParams: (NSDictionary *)params {
-    NSString *inviterId = params[@"inviter_id"];
-    NSString *msg  = [NSString stringWithFormat:@"get install params: %@", inviterId];
-    dispatch_async(dispatch_get_main_queue(), ^{
-    [self.view makeToast:msg duration:5.0 position:CSToastPositionCenter];
-    });
-    
-    NSString *userId = [RichOXBaseManager userId];
-    if (userId == nil || [userId isEqualToString:@""]) {
-        [RichOXUser registerUserId:inviterId initInfo:nil success:^(RichOXUserData * _Nonnull userData) {
-            NSLog(@"*******registerUserId测试成功: userData: %@", [userData description]);
-        } failure:^(NSError * _Nonnull error) {
-            NSLog(@"*******registerUserId测试失败: errorCode: %zd, message:%@", error.code, error.localizedDescription);
-        }];
-    } else {
-        [RichOXUser bindInviter:inviterId success:^{
-            NSLog(@"*******bindInviter测试成功");
-        } failure:^(NSError * _Nonnull error) {
-            NSLog(@"*******bindInviter测试失败: errorCode: %zd, message:%@", error.code, error.localizedDescription);
-        }];
-    }
-}
-
 - (void)getShareLink {
     NSString *userId = [RichOXBaseManager userId];
     if (userId == nil || self.hostText.text == nil || [self.hostText.text isEqualToString:@""]) {
@@ -388,9 +362,10 @@
     UIImage *image = [UIImage imageNamed:@"googleLogo"];
     shareContent.images = @[image];
     NSArray *items = @[@(RICHOX_SHARE_PLATFORM_WECHAT_SESSION), @(RICHOX_SHARE_PLATFORM_WECHAT_TIMELINE), @(RICHOX_SHARE_PLATFORM_QQ_FRIEND), @(RICHOX_SHARE_PLATFORM_SINAWEIBO), @(RICHOX_SHARE_PLATFORM_DOUYIN), @(RICHOX_SHARE_PLATFORM_COPY),@(RICHOX_SHARE_PLATFORM_MAIL),@(RICHOX_SHARE_PLATFORM_SMS)];
-
+    [RichOXFission startShare];
     [RichOXShareManager popShareWithView:self.popView items:items shareContent:shareContent success:^(void) {
           NSLog(@"******** popShareWithView *********测试成功");
+        [RichOXFission shareSuccess];
     } failure:^(NSError *err) {
           NSLog(@"******** popShareWithView *********测试失败，%zd, %@",err.code, err.localizedDescription);
     }];
@@ -401,11 +376,15 @@
     shareContent.text = @"share";
     shareContent.title = @"分享得红包!";
     UIImage *image = [UIImage imageNamed:@"googleLogo"];
-    shareContent.images = @[image];
+    if (image != nil) {
+        shareContent.images = @[image];
+    }
+    [RichOXFission startShare];
     switch (btn.tag) {
         case 1:
             [RichOXShareManager shareTo:RICHOX_SHARE_PLATFORM_WECHAT_SESSION shareContent:shareContent success:^{
                 NSLog(@"******** shareToWechat *********测试成功");
+                [RichOXFission shareSuccess];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"******** shareToWechat *********测试失败，%zd, %@",error.code, error.localizedDescription);
             }];
@@ -414,6 +393,7 @@
         case 2:
             [RichOXShareManager shareTo:RICHOX_SHARE_PLATFORM_QQ_FRIEND shareContent:shareContent success:^{
                 NSLog(@"******** shareToQQ *********测试成功");
+                [RichOXFission shareSuccess];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"******** shareToQQ *********测试失败，%zd, %@",error.code, error.localizedDescription);
             }];
@@ -422,6 +402,7 @@
         case 3:
             [RichOXShareManager shareTo:RICHOX_SHARE_PLATFORM_SINAWEIBO shareContent:shareContent success:^{
                 NSLog(@"******** shareToWeibo *********测试成功");
+                [RichOXFission shareSuccess];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"******** shareToWeibo *********测试失败，%zd, %@",error.code, error.localizedDescription);
             }];
@@ -430,6 +411,7 @@
         case 4:
             [RichOXShareManager shareTo:RICHOX_SHARE_PLATFORM_DOUYIN shareContent:shareContent success:^{
                 NSLog(@"******** shareToDouyin *********测试成功");
+                [RichOXFission shareSuccess];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"******** shareToDouyin *********测试失败，%zd, %@",error.code, error.localizedDescription);
             }];

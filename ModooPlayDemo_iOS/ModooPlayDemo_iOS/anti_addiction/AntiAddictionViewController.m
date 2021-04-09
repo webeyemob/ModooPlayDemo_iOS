@@ -44,7 +44,7 @@
 
 // 初始化 AntiAddiction
 - (void)initAntiAddiction {
-    [AntiAddictionSdk init:@"8c254db9-a6c2-4f3b-a75b-742abce6d961"];
+    [AntiAddictionSdk init:@"b51dd720-c083-4349-a99e-3de18dfccbd4"];
 }
 
 - (IBAction)back:(id)sender {

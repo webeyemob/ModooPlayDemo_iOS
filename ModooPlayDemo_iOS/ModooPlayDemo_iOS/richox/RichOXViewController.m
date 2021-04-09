@@ -113,6 +113,8 @@
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(header.mas_bottom).offset(1);
     }];
+    
+    [RichOXFission showShare];
 }
 
 - (void) closePage {
@@ -281,6 +283,7 @@
 - (void)shareTest:(NSString *)testItem {
     RichOXShareViewController *vc = [[RichOXShareViewController alloc] init];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [RichOXFission openSharePage];
     [self presentViewController:vc animated:YES completion:nil];
 }
 

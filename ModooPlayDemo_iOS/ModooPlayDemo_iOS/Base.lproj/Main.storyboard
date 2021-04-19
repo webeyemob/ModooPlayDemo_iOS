@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,66 +23,78 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I2-JO-qM5">
-                                <rect key="frame" x="0.0" y="128" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I2-JO-qM5">
+                                <rect key="frame" x="0.0" y="98" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="广告测试"/>
                                 <connections>
                                     <action selector="testAds:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TFC-0j-Vmj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5y-TP-15y">
-                                <rect key="frame" x="0.0" y="182" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5y-TP-15y">
+                                <rect key="frame" x="0.0" y="152" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="用户协议"/>
                                 <connections>
                                     <action selector="showUserAgreement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b8R-IV-mWj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRx-4F-StG">
-                                <rect key="frame" x="0.0" y="236" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRx-4F-StG">
+                                <rect key="frame" x="0.0" y="206" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="隐私政策"/>
                                 <connections>
                                     <action selector="showPrivacyPolicy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gmJ-I1-w1A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-SI-H4h">
-                                <rect key="frame" x="0.0" y="290" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-SI-H4h">
+                                <rect key="frame" x="0.0" y="260" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="清除缓存"/>
                                 <connections>
                                     <action selector="clearCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Pk-QM-cAM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noI-Lb-GLr">
-                                <rect key="frame" x="0.0" y="344" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noI-Lb-GLr">
+                                <rect key="frame" x="0.0" y="314" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="游戏防沉迷"/>
                                 <connections>
                                     <action selector="antiAddiction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SGH-HV-e1O"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-UD-WcP">
-                                <rect key="frame" x="0.0" y="398" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-UD-WcP">
+                                <rect key="frame" x="0.0" y="368" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="微信登录"/>
                                 <connections>
                                     <action selector="weChatLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXl-eh-B34"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYl-mn-9Ry">
-                                <rect key="frame" x="0.0" y="452" width="414" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYl-mn-9Ry">
+                                <rect key="frame" x="0.0" y="422" width="414" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="客服系统"/>
                                 <connections>
                                     <action selector="udesk:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o65-gV-5pT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12a-y8-A1p">
+                                <rect key="frame" x="0.0" y="476" width="414" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="RichOX活动平台"/>
+                                <connections>
+                                    <action selector="richOXTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NVJ-v4-vfp"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9I2-JO-qM5" firstAttribute="top" secondItem="lh8-db-bPg" secondAttribute="bottom" constant="50" id="5Xo-J2-zAg"/>
+                            <constraint firstItem="9I2-JO-qM5" firstAttribute="top" secondItem="lh8-db-bPg" secondAttribute="bottom" constant="20" id="5Xo-J2-zAg"/>
+                            <constraint firstItem="12a-y8-A1p" firstAttribute="top" secondItem="wYl-mn-9Ry" secondAttribute="bottom" id="60Z-j5-DiR"/>
+                            <constraint firstItem="9I2-JO-qM5" firstAttribute="top" secondItem="lh8-db-bPg" secondAttribute="bottom" constant="20" id="7ZJ-b8-ois"/>
+                            <constraint firstItem="12a-y8-A1p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B0g-Kt-boX"/>
                             <constraint firstItem="lh8-db-bPg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Czn-fV-SHr"/>
                             <constraint firstItem="3a2-SI-H4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DDt-4c-j5a"/>
                             <constraint firstItem="wYl-mn-9Ry" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dic-FY-2uz"/>
@@ -104,15 +117,16 @@
                             <constraint firstItem="DU6-UD-WcP" firstAttribute="top" secondItem="noI-Lb-GLr" secondAttribute="bottom" id="uiw-Q0-V3r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="noI-Lb-GLr" secondAttribute="trailing" id="vQG-40-xkA"/>
                             <constraint firstItem="noI-Lb-GLr" firstAttribute="top" secondItem="3a2-SI-H4h" secondAttribute="bottom" id="x7g-1a-aE3"/>
+                            <constraint firstItem="12a-y8-A1p" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zGL-nq-hPH"/>
                             <constraint firstItem="noI-Lb-GLr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zhb-9d-xUq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="adTest" destination="9I2-JO-qM5" id="jRZ-hF-ebQ"/>
                         <outlet property="antiAddiction" destination="noI-Lb-GLr" id="gL8-Mf-fwi"/>
                         <outlet property="clearCache" destination="3a2-SI-H4h" id="Fe2-lC-6YX"/>
                         <outlet property="privacyPolicy" destination="qRx-4F-StG" id="a4Q-IG-Ubx"/>
+                        <outlet property="richOXBtn" destination="12a-y8-A1p" id="2Hg-OJ-fxr"/>
                         <outlet property="udesk" destination="wYl-mn-9Ry" id="9ME-wk-okS"/>
                         <outlet property="userAgreement" destination="S5y-TP-15y" id="hbn-3t-4Jg"/>
                         <outlet property="weChatLogin" destination="DU6-UD-WcP" id="zz4-3W-5nO"/>
@@ -123,4 +137,9 @@
             <point key="canvasLocation" x="136.23188405797103" y="91.304347826086968"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
+		1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF22262D60FB00834B1A /* InviteAwardViewController.m */; };
+		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
+		1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */; };
+		1493CF43262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */; };
+		1493CF44262D60FB00834B1A /* InviteAwardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */; };
+		1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */; };
+		1493CF46262D60FB00834B1A /* StrategyRProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */; };
+		1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF34262D60FB00834B1A /* RichOXShareViewController.m */; };
+		1493CF48262D60FB00834B1A /* RichOXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF35262D60FB00834B1A /* RichOXViewController.m */; };
+		1493CF49262D60FB00834B1A /* RichOXActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */; };
+		1493CF4A262D60FB00834B1A /* RichOXMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF37262D60FB00834B1A /* RichOXMissionViewController.m */; };
+		1493CF4B262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */; };
+		1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */; };
+		1493CF4D262D60FB00834B1A /* RichOXStageStrategyRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */; };
 		14ABEF8326144E0700B1CEC6 /* RealNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ABEF8126144E0700B1CEC6 /* RealNameView.m */; };
 		69DEF6919F78E3FF6B426308 /* Pods_ModooPlayDemo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6AB3064654C02828C82242 /* Pods_ModooPlayDemo_iOS.framework */; };
 		8309B51925FF69A4003C3297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D60225AEEB620050824E /* Foundation.framework */; };
@@ -47,6 +62,36 @@
 
 /* Begin PBXFileReference section */
 		030AF96E4A2EAF4D6B442698 /* Pods-ModooPlayDemo_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.debug.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1493CF1F262D60FB00834B1A /* InviteAwardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardViewController.h; sourceTree = "<group>"; };
+		1493CF20262D60FB00834B1A /* ApprenticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeViewController.h; sourceTree = "<group>"; };
+		1493CF21262D60FB00834B1A /* inviteAwardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteAwardObject.m; sourceTree = "<group>"; };
+		1493CF22262D60FB00834B1A /* InviteAwardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardViewController.m; sourceTree = "<group>"; };
+		1493CF23262D60FB00834B1A /* ApprenticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeViewController.m; sourceTree = "<group>"; };
+		1493CF24262D60FB00834B1A /* inviteAwardObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteAwardObject.h; sourceTree = "<group>"; };
+		1493CF25262D60FB00834B1A /* RichOXActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXActivityViewController.h; sourceTree = "<group>"; };
+		1493CF26262D60FB00834B1A /* RichOXShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXShareViewController.h; sourceTree = "<group>"; };
+		1493CF27262D60FB00834B1A /* RichOXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXViewController.h; sourceTree = "<group>"; };
+		1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeTableViewCell.h; sourceTree = "<group>"; };
+		1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionTableViewCell.m; sourceTree = "<group>"; };
+		1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyProgessTableViewCell.m; sourceTree = "<group>"; };
+		1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyRProgessTableViewCell.h; sourceTree = "<group>"; };
+		1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardTableViewCell.m; sourceTree = "<group>"; };
+		1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyProgessTableViewCell.h; sourceTree = "<group>"; };
+		1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionTableViewCell.h; sourceTree = "<group>"; };
+		1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeTableViewCell.m; sourceTree = "<group>"; };
+		1493CF31262D60FB00834B1A /* InviteAwardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardTableViewCell.h; sourceTree = "<group>"; };
+		1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyRProgessTableViewCell.m; sourceTree = "<group>"; };
+		1493CF33262D60FB00834B1A /* RichOXMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXMissionViewController.h; sourceTree = "<group>"; };
+		1493CF34262D60FB00834B1A /* RichOXShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXShareViewController.m; sourceTree = "<group>"; };
+		1493CF35262D60FB00834B1A /* RichOXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXViewController.m; sourceTree = "<group>"; };
+		1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXActivityViewController.m; sourceTree = "<group>"; };
+		1493CF37262D60FB00834B1A /* RichOXMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXMissionViewController.m; sourceTree = "<group>"; };
+		1493CF39262D60FB00834B1A /* RichOXNormalStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXNormalStrategyViewController.h; sourceTree = "<group>"; };
+		1493CF3A262D60FB00834B1A /* RichOXStageStrategyRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyRViewController.h; sourceTree = "<group>"; };
+		1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyViewController.m; sourceTree = "<group>"; };
+		1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXNormalStrategyViewController.m; sourceTree = "<group>"; };
+		1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyRViewController.m; sourceTree = "<group>"; };
+		1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyViewController.h; sourceTree = "<group>"; };
 		14ABEF8126144E0700B1CEC6 /* RealNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealNameView.m; sourceTree = "<group>"; };
 		14ABEF8226144E0700B1CEC6 /* RealNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealNameView.h; sourceTree = "<group>"; };
 		3D6AB3064654C02828C82242 /* Pods_ModooPlayDemo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModooPlayDemo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +162,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1493CF1D262D60FB00834B1A /* richox */ = {
+			isa = PBXGroup;
+			children = (
+				1493CF28262D60FB00834B1A /* cellview */,
+				1493CF25262D60FB00834B1A /* RichOXActivityViewController.h */,
+				1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */,
+				1493CF33262D60FB00834B1A /* RichOXMissionViewController.h */,
+				1493CF37262D60FB00834B1A /* RichOXMissionViewController.m */,
+				1493CF26262D60FB00834B1A /* RichOXShareViewController.h */,
+				1493CF34262D60FB00834B1A /* RichOXShareViewController.m */,
+				1493CF27262D60FB00834B1A /* RichOXViewController.h */,
+				1493CF35262D60FB00834B1A /* RichOXViewController.m */,
+				1493CF1E262D60FB00834B1A /* sect */,
+				1493CF38262D60FB00834B1A /* strategy */,
+			);
+			path = richox;
+			sourceTree = "<group>";
+		};
+		1493CF1E262D60FB00834B1A /* sect */ = {
+			isa = PBXGroup;
+			children = (
+				1493CF1F262D60FB00834B1A /* InviteAwardViewController.h */,
+				1493CF20262D60FB00834B1A /* ApprenticeViewController.h */,
+				1493CF21262D60FB00834B1A /* inviteAwardObject.m */,
+				1493CF22262D60FB00834B1A /* InviteAwardViewController.m */,
+				1493CF23262D60FB00834B1A /* ApprenticeViewController.m */,
+				1493CF24262D60FB00834B1A /* inviteAwardObject.h */,
+			);
+			path = sect;
+			sourceTree = "<group>";
+		};
+		1493CF28262D60FB00834B1A /* cellview */ = {
+			isa = PBXGroup;
+			children = (
+				1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */,
+				1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */,
+				1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */,
+				1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */,
+				1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */,
+				1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
+				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
+				1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */,
+				1493CF31262D60FB00834B1A /* InviteAwardTableViewCell.h */,
+				1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */,
+			);
+			path = cellview;
+			sourceTree = "<group>";
+		};
+		1493CF38262D60FB00834B1A /* strategy */ = {
+			isa = PBXGroup;
+			children = (
+				1493CF39262D60FB00834B1A /* RichOXNormalStrategyViewController.h */,
+				1493CF3A262D60FB00834B1A /* RichOXStageStrategyRViewController.h */,
+				1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */,
+				1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */,
+				1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */,
+				1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */,
+			);
+			path = strategy;
+			sourceTree = "<group>";
+		};
 		55DF56F7AFC790190FC2805B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +312,7 @@
 		83D5D5E425AEEAA20050824E /* ModooPlayDemo_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1493CF1D262D60FB00834B1A /* richox */,
 				830BA83925CE54B9008D5B23 /* anti_addiction */,
 				83381EA525B454EB00C19F5E /* macro.h */,
 				835CD7E025B453930070BDF4 /* ads */,
@@ -386,17 +493,32 @@
 				83381EC025B45EC500C19F5E /* SplashViewController.m in Sources */,
 				83897FB325B3F2F100C87454 /* CustomPrivacyDialog.m in Sources */,
 				83D5D5ED25AEEAA20050824E /* MainViewController.m in Sources */,
+				1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */,
 				83381EC725B45ECC00C19F5E /* NetworkTestViewController.m in Sources */,
 				14ABEF8326144E0700B1CEC6 /* RealNameView.m in Sources */,
+				1493CF43262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */,
+				1493CF48262D60FB00834B1A /* RichOXViewController.m in Sources */,
+				1493CF4D262D60FB00834B1A /* RichOXStageStrategyRViewController.m in Sources */,
 				83D5D5E725AEEAA20050824E /* AppDelegate.m in Sources */,
+				1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */,
 				83381EC425B45EC500C19F5E /* BannerViewController.m in Sources */,
 				83381EC125B45EC500C19F5E /* InterstitialViewController.m in Sources */,
+				1493CF4A262D60FB00834B1A /* RichOXMissionViewController.m in Sources */,
+				1493CF46262D60FB00834B1A /* StrategyRProgessTableViewCell.m in Sources */,
 				83D5D5F825AEEAA40050824E /* main.m in Sources */,
+				1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */,
+				1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */,
+				1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */,
+				1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */,
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,
+				1493CF4B262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */,
+				1493CF49262D60FB00834B1A /* RichOXActivityViewController.m in Sources */,
 				834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */,
 				83D5D5EA25AEEAA20050824E /* SceneDelegate.m in Sources */,
+				1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */,
+				1493CF44262D60FB00834B1A /* InviteAwardTableViewCell.m in Sources */,
 				83381EC225B45EC500C19F5E /* FeedListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

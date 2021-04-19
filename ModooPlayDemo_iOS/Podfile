@@ -5,6 +5,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 # RangersAppLog Source
 source 'https://github.com/bytedance/cocoapods_sdk_source_repo.git'
 
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
+end
+
 target 'ModooPlayDemo_iOS' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -48,11 +54,23 @@ target 'ModooPlayDemo_iOS' do
   
   # 游戏防沉迷
   pod 'TGCAntiAddiction'
-  
+
   # 微信登录
   pod 'TGCWeChat'
   
   # 客服系统
   pod 'TGCUdesk'
   
+
+  # RichOX
+  pod 'RichOXBase'
+  pod 'RichOX'
+  pod 'RichOXSect'
+  pod 'RichOXFission_Moblink'
+  pod 'RichOXStageStrategy'
+  pod 'RichOXStageStrategy_R'
+  pod 'RichOXNormalStrategy'
+  pod 'RichOXShare'
+    
 end
+

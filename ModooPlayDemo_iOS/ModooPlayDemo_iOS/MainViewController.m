@@ -11,14 +11,17 @@
 #import "CustomPrivacyDialog.h"
 #import "NetworkTestViewController.h"
 #import "AntiAddictionViewController.h"
+#import "RichOXViewController.h"
 @import PrivacyPolicy;
 @import TGCenter;
 @import TGCWeChat;
 #import "WXApi.h"
 @import TGCUdesk;
+@import EmbededSdk;
+@import RichOXFission_Moblink;
+@import RichOXBase;
 
-@interface MainViewController () <TGCWeChatLoginDelegate>
-
+@interface MainViewController () <TGCWeChatLoginDelegate, RichOXFissionDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *adTest;
 @property (strong, nonatomic) IBOutlet UIButton *userAgreement;
 @property (strong, nonatomic) IBOutlet UIButton *privacyPolicy;
@@ -26,6 +29,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *antiAddiction;
 @property (strong, nonatomic) IBOutlet UIButton *weChatLogin;
 @property (strong, nonatomic) IBOutlet UIButton *udesk;
+
+@property (weak, nonatomic) IBOutlet UIButton *richOXBtn;
 
 @end
 
@@ -102,10 +107,37 @@
 - (void)dealDialogAgreeResult:(BOOL)agree {
     if (agree) {
         [self initModooPlay];
+        [[RichOXFission shareInstance] start:self];
     } else {
         [self.view makeToast:@"您需要阅读并同意后才可以使用本应用"
                     duration:2.0
                     position:CSToastPositionCenter];
+    }
+}
+
+#pragma  mark RichOXLinkDelegate
+- (void)getInstallParams: (NSDictionary *)params {
+    NSString *inviterId = params[@"inviter_id"];
+    NSString *msg  = [NSString stringWithFormat:@"get install params: %@", inviterId];
+    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.view makeToast:msg duration:5.0 position:CSToastPositionCenter];
+    });
+    
+    NSString *userId = [RichOXBaseManager userId];
+    if (userId == nil || [userId isEqualToString:@""]) {
+        [RichOXUser registerUserId:inviterId initInfo:nil success:^(RichOXUserData * _Nonnull userData) {
+            NSLog(@"*******registerUserId测试成功: userData: %@", [userData description]);
+            [RichOXFission reportFissionParam:NO];
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******registerUserId测试失败: errorCode: %zd, message:%@", error.code, error.localizedDescription);
+        }];
+    } else {
+        [RichOXUser bindInviter:inviterId success:^{
+            NSLog(@"*******bindInviter测试成功");
+            [RichOXFission reportFissionParam:NO];
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******bindInviter测试失败: errorCode: %zd, message:%@", error.code, error.localizedDescription);
+        }];
     }
 }
 
@@ -145,6 +177,13 @@
     TGCWeChatHelper.sharedInstance.loginDelegate = self;
     [TGCWeChatHelper.sharedInstance login:self];
 }
+
+- (IBAction)richOXTest:(id)sender {
+   RichOXViewController *vc = [[RichOXViewController alloc] init];
+    vc.modalPresentationStyle = 0;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 
 #pragma mark - TGCWeChatLoginDelegate
 - (void)tgcWeChatLogin_Success:(NSString *)code {

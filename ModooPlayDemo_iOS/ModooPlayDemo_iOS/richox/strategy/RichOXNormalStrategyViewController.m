@@ -82,6 +82,18 @@
         make.width.equalTo(@(50));
     }];
     
+    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [header addSubview:infoBtn];
+       
+    [infoBtn addTarget:self action:@selector(getTaskProcess) forControlEvents:UIControlEventTouchUpInside];
+    [infoBtn setTitle:@"TaskInfo" forState:UIControlStateNormal];
+    [infoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [infoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(header).offset(10);
+        make.centerY.equalTo(header);
+        make.width.equalTo(@(100));
+    }];
+    
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = [UIColor grayColor];
     [self.view addSubview:line];
@@ -162,6 +174,19 @@
 
 - (void) closePage {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)getTaskProcess {
+    NSMutableArray *taskIds = [NSMutableArray new];
+    for (RichOXNormalStrategyTask *task in self.taskList) {
+        [taskIds addObject:task.taskId];
+    }
+    
+    [self.stragegyInstance getTaskProcessInfo:taskIds success:^(RichOXNormalStrategyTaskProcessResult * _Nonnull result) {
+        NSLog(@"getTaskProcess success: %@", [result description]);
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"getTaskProcess error: %@", error);
+    }];
 }
 
 - (UITableView *)progressTab {

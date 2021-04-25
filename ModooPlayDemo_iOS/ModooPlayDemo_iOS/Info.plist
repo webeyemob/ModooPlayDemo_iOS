@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TGCAppleId</key>
+	<key>TGCAppleID</key>
 	<string>id134567899900</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
@@ -95,12 +95,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>fissionInfo</key>
-    <dict>
-        <key>host</key>
-        <string>https://api_test.freeqingnovel.com/</string>
-        <key>key</key>
-        <string>xjdN82dpqMf</string>
-    </dict>
 </dict>
 </plist>

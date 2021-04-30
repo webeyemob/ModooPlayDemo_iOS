@@ -22,7 +22,8 @@
 @property (nonatomic, strong) UITableView *progressTab;
 @property (nonatomic, strong) UIView *buttonContainer;
 
-@property (nonatomic) float currentAmount;
+@property (nonatomic, strong) NSArray <RichOXSSProgressInfo *> *progressInfos;
+@property (nonatomic, strong) NSArray <RichOXSSWithdrawStatus *>*withdrawStatus;
 
 @property (nonatomic, strong) UITextField *stragegyIdText;
 @property (nonatomic, strong) NSString *lastId;
@@ -181,7 +182,8 @@
                 [self.progressTab reloadData];
             });
             [self.stragegyInstance syncCurrentPrize:^(RichOXStageStrategyStatus *status) {
-                self.currentAmount = status.progressValue;
+                self.progressInfos = status.progressInfos;
+                self.withdrawStatus = status.withdrawStatus;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.progressTab reloadData];
                 });
@@ -219,8 +221,8 @@
         amount = amount * 0.5;
     }
     
-    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^(float deltaPrizeAmount, float totalPrizeAmount){
-        self.currentAmount += amount;
+    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^(RichOXStageStrategyTaskResult *result){
+        self.progressInfos = result.progressInfos;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.progressTab reloadData];
         });
@@ -231,41 +233,102 @@
 
 #pragma mark <UITableViewDelegate>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.strategyList == nil) {
-        return 0;
+    if (section == 0) {
+        return self.progressInfos != nil? [self.progressInfos count] : 0;
+    } else {
+        return self.strategyList != nil? [self.strategyList count] : 0;
     }
-    return [self.strategyList count];
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"进度值";
+    } else {
+        return @"提现进度";
+    }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    if (indexPath.section == 0) {
+        return 40;
+    } else {
+        return 100;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"pregressCellIdentifier";
-    StrategyRProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[StrategyRProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
+    if (indexPath.section == 0) {
+        static NSString *assetIdentifier = @"ssrprogressCellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:assetIdentifier];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:assetIdentifier];
+        }
+        
+        RichOXSSProgressInfo *progressInfo = self.progressInfos[indexPath.row];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@: %.2f", progressInfo.progressName, progressInfo.progressValue];
+        return cell;
+    } else {
+        static NSString *cellIdentifier = @"ssrwithdrawCellIdentifier";
+        StrategyRProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[StrategyRProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        
+        RichOXStageStrategyItemR *item = self.strategyList[indexPath.row];
+        double progress = 0;
+        RICHOX_SS_R_WITHDRAW_STATUS withdrawStatus = RICHOX_SS_R_WITHDRAW_STATUS_NO;
+            
+        int status = 0; //只有进度值条件
+            
+        BOOL checkInvite = YES;
+        if (self.withdrawStatus != nil) {
+            for (RichOXSSWithdrawStatus *statu in self.withdrawStatus) {
+                if ([statu.taskId isEqualToString:item.packageId]) {
+                    for(RichOXSSProgressInfo *temp in self.progressInfos) {
+                        if ([temp.progressId isEqualToString:statu.progressInfos[0].progressId]) {
+                            progress = temp.progressValue/statu.progressInfos[0].progressRank;
+                        }
+                    }
     
-    RichOXStageStrategyItemR *item = self.strategyList[indexPath.row];
-    
-    [cell setName:item.packageId progress:(double)(self.currentAmount)/item.needPrize packetId:item.packageId block:^() {
-            RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"阶梯红包提现"];
-        [self.stragegyInstance withdraw:item.packageId userTarget:10 info:info success:^{
-                
-            } failure:^(NSError * _Nonnull error) {
-                NSLog(@"withdraw failed: %@", error);
-            }];
+                    withdrawStatus = statu.status;
+                    if (statu.needInviteUserCount > 0 && statu.alreayInviteUserCount < statu.needInviteUserCount) {
+                        checkInvite = NO;
+                    }
+                }
+            }
+        }
+            
+        if (withdrawStatus == 100) {
+            status = 2; //已提现
+        } else {
+            if (progress >= 1.0 && !checkInvite) {
+                status = 1;  //进度值满足，邀请不满足
+            }
+        }
+            
+        [cell setName:item.packageId progress:progress packetId:item.packageId status: status block:^() {
+            if (status == 1) {
+                //去邀请
+            } else {
+                RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"阶梯红包提现"];
+                [self.stragegyInstance withdraw:item.packageId info:info success:^{
+                    
+                } failure:^(NSError * _Nonnull error) {
+                    NSLog(@"withdraw failed: %@", error);
+                }];
+            }
         }];
-    
-    return cell;
+        
+        return cell;
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

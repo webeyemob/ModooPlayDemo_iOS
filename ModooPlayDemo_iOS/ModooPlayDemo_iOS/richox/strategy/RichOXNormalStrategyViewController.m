@@ -486,7 +486,7 @@
             }
         }
             
-        [cell setName:item.packageId progress:progress packetId:item.packageId block:^() {
+        [cell setName:item.packageId progress:progress packetId:item.packageId status: 0 block:^() {
                 RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"通用红包提现"];
                 [self.stragegyInstance withdraw:item.packageId info:info success:^(RichOXNormalStrategyWithdrawResult *result){
                     self.currentAssets = result.assetStatus;

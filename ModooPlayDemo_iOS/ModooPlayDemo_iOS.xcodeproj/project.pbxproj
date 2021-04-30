@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */; };
 		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
 		1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF22262D60FB00834B1A /* InviteAwardViewController.m */; };
 		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		030AF96E4A2EAF4D6B442698 /* Pods-ModooPlayDemo_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.debug.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAppEventViewController.m; sourceTree = "<group>"; };
+		1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAppEventViewController.h; sourceTree = "<group>"; };
 		1493CF1F262D60FB00834B1A /* InviteAwardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardViewController.h; sourceTree = "<group>"; };
 		1493CF20262D60FB00834B1A /* ApprenticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeViewController.h; sourceTree = "<group>"; };
 		1493CF21262D60FB00834B1A /* inviteAwardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteAwardObject.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 		1493CF1D262D60FB00834B1A /* richox */ = {
 			isa = PBXGroup;
 			children = (
+				1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */,
+				1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */,
 				1493CF28262D60FB00834B1A /* cellview */,
 				1493CF25262D60FB00834B1A /* RichOXActivityViewController.h */,
 				1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */,
@@ -197,14 +202,14 @@
 			isa = PBXGroup;
 			children = (
 				1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */,
-				1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */,
-				1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */,
-				1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */,
-				1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */,
-				1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
-				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
 				1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */,
 				1493CF31262D60FB00834B1A /* InviteAwardTableViewCell.h */,
+				1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */,
+				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
+				1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */,
+				1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
+				1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */,
+				1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */,
 				1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */,
 			);
 			path = cellview;
@@ -510,6 +515,7 @@
 				1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */,
 				1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */,
 				1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */,
+				1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */,
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,

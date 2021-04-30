@@ -19,6 +19,7 @@
 #import "ApprenticeViewController.h"
 #import "InviteAwardViewController.h"
 #import "RichOXMissionViewController.h"
+#import "ReportAppEventViewController.h"
 @import RichOXBase;
 @import RichOXFission_Moblink;
 @import RichOXSect;
@@ -55,7 +56,7 @@
                      @{@"基础功能":@[@"游客注册",@"绑定社交账号",@"微信用户注册", @"获取激励任务",@"激励任务记录查询",@"今日金币获取信息查询",@"获取提现信息",@"提现请求",@"提现微信"]},
                      @{@"分享":@[@"打开分享页面"]},
                      @{@"宗门":@[@"获取弟子信息",@"招募奖励",@"产生贡献", @"现金兑换"]},
-                     @{@"策略": @[@"阶梯红包测试页面(F)", @"阶梯红包测试页面(R)", @"通用策略测试页面"]}
+                     @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面(R)", @"通用策略测试页面"]}
     ];
     
     UIView *header = [[UIView alloc] init];
@@ -197,6 +198,10 @@
             [self strageTest:testItem];
             break;
             
+        case 5://应用内事件上报测试
+            [self reportAppEventTest:testItem];
+            break;
+            
         default:
             break;
     }
@@ -312,11 +317,11 @@
 }
 
 - (void)strageTest:(NSString *)testItem {
-    if ([testItem isEqualToString:@"阶梯红包测试页面(F)"]) {
+    if ([testItem isEqualToString:@"阶梯策略测试页面(F)"]) {
         RichOXStageStrategyViewController *testPage = [[RichOXStageStrategyViewController alloc] init];
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
-    } else if ([testItem isEqualToString:@"阶梯红包测试页面(R)"]) {
+    } else if ([testItem isEqualToString:@"阶梯策略测试页面(R)"]) {
         RichOXStageStrategyRViewController *testPage = [[RichOXStageStrategyRViewController alloc] init];
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
@@ -325,6 +330,12 @@
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
     }
+}
+
+- (void)reportAppEventTest:(NSString *)testItem {
+    ReportAppEventViewController *testPage = [[ReportAppEventViewController alloc] init];
+    
+    [self presentViewController:testPage animated:YES completion:nil];
 }
 
 @end

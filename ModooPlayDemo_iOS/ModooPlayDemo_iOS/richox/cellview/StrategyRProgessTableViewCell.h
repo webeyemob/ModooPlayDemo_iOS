@@ -15,7 +15,7 @@ typedef void (^StrategyRProgessDoWithdraw)(void);
 
 @interface StrategyRProgessTableViewCell : UITableViewCell
 
-- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId block:(StrategyRProgessDoWithdraw)block;
+- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId status:(int)status block:(StrategyRProgessDoWithdraw)block;
 
 @end
 

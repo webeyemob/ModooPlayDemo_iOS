@@ -72,13 +72,24 @@
     self.block();
 }
 
-- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId  block:(StrategyRProgessDoWithdraw)block {
+- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId  status:(int)status block:(StrategyRProgessDoWithdraw)block {
     self.nameLabel.text = name;
-    self.progress.progress = progress;
     self.packetId = packetId;
+    if (status == 2){
+        self.doMissionBtn.enabled = NO;
+        [self.doMissionBtn setTitle:@"已提现" forState:UIControlStateDisabled];
+    }
     if (progress >= 1.0) {
-        self.doMissionBtn.enabled = YES;
+        self.progress.progress = 1.0;
+        if (status == 1) {
+            self.doMissionBtn.enabled = YES;
+            [self.doMissionBtn setTitle:@"去邀请" forState:UIControlStateNormal];
+        } else {
+            [self.doMissionBtn setTitle:@"去提现" forState:UIControlStateNormal];
+            self.doMissionBtn.enabled = YES;
+        }
     } else {
+        self.progress.progress = progress;
         self.doMissionBtn.enabled = NO;
     }
     self.block = block;

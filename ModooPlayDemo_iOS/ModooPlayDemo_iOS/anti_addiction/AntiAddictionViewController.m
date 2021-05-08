@@ -19,7 +19,7 @@
  
  2、添加依赖库 libc++.tbd。
  */
-@interface AntiAddictionViewController () <AntiAddictionRealNameDelegate, AntiAddictionTimeLimitDelegate>
+@interface AntiAddictionViewController () <AntiAddictionRealNameDelegate, AntiAddictionTimeLimitDelegate, AntiAddictionEventDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *realNameBtn;
 
@@ -40,9 +40,12 @@
     // Do any additional setup after loading the view from its nib.
     
     [AntiAddictionSdk setAutoShowTimeLimitPage:YES];
+    
+    [AntiAddictionEventManager registerDelegate:self];
 }
 
 - (IBAction)back:(id)sender {
+    [AntiAddictionEventManager unRegisterDelegate:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -63,7 +66,7 @@
             if (name == nil || [name length] < 2 || idNumber == nil || [idNumber length] != 18) {
                 [weakSelf logAndToast:@"real name input error " message:@"real name input error "];
             } else {
-                [AntiAddictionSdk realName:name idNumber:idNumber delegate:strongBlock];
+                [AntiAddictionSdk realName:99 name:name idNumber:idNumber delegate:strongBlock];
                 weakSelf.popView.hidden = YES;
             }
         }];
@@ -154,6 +157,15 @@
         });
     }
     NSLog(@"%@", [NSString stringWithFormat:@"AntiAddictionViewController onAntiAddictionResult: %@, %@", toast, message]);
+}
+
+#pragma mark <AntiAddictionEventDelegate>
+- (void)onRealName:(AntiAddictionRealNameEvent *)event {
+    NSLog(@"####### event is %@ #######", [event description]);
+}
+
+- (void)onTimeLimt:(AntiAddictionTimeLimitEvent *)event {
+    NSLog(@"+++++++ event is %@ ++++++", [event description]);
 }
 
 @end

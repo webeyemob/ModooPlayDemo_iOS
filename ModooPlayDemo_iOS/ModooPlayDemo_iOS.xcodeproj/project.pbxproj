@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */; };
 		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
-		1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF22262D60FB00834B1A /* InviteAwardViewController.m */; };
 		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
 		1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */; };
 		1493CF43262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */; };
-		1493CF44262D60FB00834B1A /* InviteAwardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */; };
 		1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */; };
 		1493CF46262D60FB00834B1A /* StrategyRProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */; };
 		1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF34262D60FB00834B1A /* RichOXShareViewController.m */; };
@@ -24,6 +22,9 @@
 		1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */; };
 		1493CF4D262D60FB00834B1A /* RichOXStageStrategyRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */; };
 		14ABEF8326144E0700B1CEC6 /* RealNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ABEF8126144E0700B1CEC6 /* RealNameView.m */; };
+		14EF8C212653B00200190AF8 /* NewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF8C1E2653B00200190AF8 /* NewLoginViewController.m */; };
+		14EF8C222653B00200190AF8 /* WXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF8C1F2653B00200190AF8 /* WXLoginViewController.m */; };
+		14EF8C252653B0B700190AF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14EF8C242653B0B700190AF8 /* Images.xcassets */; };
 		69DEF6919F78E3FF6B426308 /* Pods_ModooPlayDemo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6AB3064654C02828C82242 /* Pods_ModooPlayDemo_iOS.framework */; };
 		8309B51925FF69A4003C3297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D60225AEEB620050824E /* Foundation.framework */; };
 		83381EC025B45EC500C19F5E /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83381EB925B45EC500C19F5E /* SplashViewController.m */; };
@@ -65,10 +66,8 @@
 		030AF96E4A2EAF4D6B442698 /* Pods-ModooPlayDemo_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.debug.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAppEventViewController.m; sourceTree = "<group>"; };
 		1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAppEventViewController.h; sourceTree = "<group>"; };
-		1493CF1F262D60FB00834B1A /* InviteAwardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardViewController.h; sourceTree = "<group>"; };
 		1493CF20262D60FB00834B1A /* ApprenticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeViewController.h; sourceTree = "<group>"; };
 		1493CF21262D60FB00834B1A /* inviteAwardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteAwardObject.m; sourceTree = "<group>"; };
-		1493CF22262D60FB00834B1A /* InviteAwardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardViewController.m; sourceTree = "<group>"; };
 		1493CF23262D60FB00834B1A /* ApprenticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeViewController.m; sourceTree = "<group>"; };
 		1493CF24262D60FB00834B1A /* inviteAwardObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteAwardObject.h; sourceTree = "<group>"; };
 		1493CF25262D60FB00834B1A /* RichOXActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXActivityViewController.h; sourceTree = "<group>"; };
@@ -78,11 +77,9 @@
 		1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionTableViewCell.m; sourceTree = "<group>"; };
 		1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyProgessTableViewCell.m; sourceTree = "<group>"; };
 		1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyRProgessTableViewCell.h; sourceTree = "<group>"; };
-		1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardTableViewCell.m; sourceTree = "<group>"; };
 		1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyProgessTableViewCell.h; sourceTree = "<group>"; };
 		1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionTableViewCell.h; sourceTree = "<group>"; };
 		1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeTableViewCell.m; sourceTree = "<group>"; };
-		1493CF31262D60FB00834B1A /* InviteAwardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardTableViewCell.h; sourceTree = "<group>"; };
 		1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyRProgessTableViewCell.m; sourceTree = "<group>"; };
 		1493CF33262D60FB00834B1A /* RichOXMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXMissionViewController.h; sourceTree = "<group>"; };
 		1493CF34262D60FB00834B1A /* RichOXShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXShareViewController.m; sourceTree = "<group>"; };
@@ -97,6 +94,11 @@
 		1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyViewController.h; sourceTree = "<group>"; };
 		14ABEF8126144E0700B1CEC6 /* RealNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealNameView.m; sourceTree = "<group>"; };
 		14ABEF8226144E0700B1CEC6 /* RealNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealNameView.h; sourceTree = "<group>"; };
+		14EF8C1B2653B00200190AF8 /* WXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXLoginViewController.h; sourceTree = "<group>"; };
+		14EF8C1C2653B00200190AF8 /* NewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLoginViewController.h; sourceTree = "<group>"; };
+		14EF8C1E2653B00200190AF8 /* NewLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLoginViewController.m; sourceTree = "<group>"; };
+		14EF8C1F2653B00200190AF8 /* WXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXLoginViewController.m; sourceTree = "<group>"; };
+		14EF8C242653B0B700190AF8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3D6AB3064654C02828C82242 /* Pods_ModooPlayDemo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModooPlayDemo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83076A7125B3EC73007B5440 /* EmbededSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EmbededSdk.framework; path = Fmk/EmbededSdk/EmbededSdk_1.0.1/EmbededSdk.framework; sourceTree = "<group>"; };
 		83076A7325B3EC7B007B5440 /* EventsIOSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventsIOSdk.framework; path = Fmk/EventsIOSdk/EventsIOSdk_1.0.1/EventsIOSdk.framework; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		1493CF1D262D60FB00834B1A /* richox */ = {
 			isa = PBXGroup;
 			children = (
+				14EF8C1A2653B00200190AF8 /* App */,
 				1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */,
 				1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */,
 				1493CF28262D60FB00834B1A /* cellview */,
@@ -188,10 +191,8 @@
 		1493CF1E262D60FB00834B1A /* sect */ = {
 			isa = PBXGroup;
 			children = (
-				1493CF1F262D60FB00834B1A /* InviteAwardViewController.h */,
 				1493CF20262D60FB00834B1A /* ApprenticeViewController.h */,
 				1493CF21262D60FB00834B1A /* inviteAwardObject.m */,
-				1493CF22262D60FB00834B1A /* InviteAwardViewController.m */,
 				1493CF23262D60FB00834B1A /* ApprenticeViewController.m */,
 				1493CF24262D60FB00834B1A /* inviteAwardObject.h */,
 			);
@@ -203,8 +204,6 @@
 			children = (
 				1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */,
 				1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */,
-				1493CF31262D60FB00834B1A /* InviteAwardTableViewCell.h */,
-				1493CF2D262D60FB00834B1A /* InviteAwardTableViewCell.m */,
 				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
 				1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */,
 				1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
@@ -226,6 +225,17 @@
 				1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */,
 			);
 			path = strategy;
+			sourceTree = "<group>";
+		};
+		14EF8C1A2653B00200190AF8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				14EF8C1B2653B00200190AF8 /* WXLoginViewController.h */,
+				14EF8C1C2653B00200190AF8 /* NewLoginViewController.h */,
+				14EF8C1E2653B00200190AF8 /* NewLoginViewController.m */,
+				14EF8C1F2653B00200190AF8 /* WXLoginViewController.m */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		55DF56F7AFC790190FC2805B /* Pods */ = {
@@ -317,6 +327,7 @@
 		83D5D5E425AEEAA20050824E /* ModooPlayDemo_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				14EF8C242653B0B700190AF8 /* Images.xcassets */,
 				1493CF1D262D60FB00834B1A /* richox */,
 				830BA83925CE54B9008D5B23 /* anti_addiction */,
 				83381EA525B454EB00C19F5E /* macro.h */,
@@ -423,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				834DBA2225AF2C700000CB60 /* Main.storyboard in Resources */,
+				14EF8C252653B0B700190AF8 /* Images.xcassets in Resources */,
 				83D5D5F525AEEAA40050824E /* LaunchScreen.storyboard in Resources */,
 				83A981F725CC272000D8C18B /* AntiAddictionViewController.xib in Resources */,
 				83D5D5F225AEEAA40050824E /* Assets.xcassets in Resources */,
@@ -513,9 +525,10 @@
 				83D5D5F825AEEAA40050824E /* main.m in Sources */,
 				1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */,
 				1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */,
-				1493CF40262D60FB00834B1A /* InviteAwardViewController.m in Sources */,
 				1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */,
 				1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */,
+				14EF8C212653B00200190AF8 /* NewLoginViewController.m in Sources */,
+				14EF8C222653B00200190AF8 /* WXLoginViewController.m in Sources */,
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,
@@ -524,7 +537,6 @@
 				834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */,
 				83D5D5EA25AEEAA20050824E /* SceneDelegate.m in Sources */,
 				1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */,
-				1493CF44262D60FB00834B1A /* InviteAwardTableViewCell.m in Sources */,
 				83381EC225B45EC500C19F5E /* FeedListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

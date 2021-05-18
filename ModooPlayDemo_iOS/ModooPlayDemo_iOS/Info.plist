@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TGCAppleID</key>
-	<string>id134567899900</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -40,13 +38,76 @@
 				<string>rangersapplog.xxxxx</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fbappid</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.xxxxxxxx</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>weixin</string>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>alipayauth</string>
+		<string>alipay</string>
+		<string>safepay</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>weibosdk3.3</string>
+		<string>weibosdk2.5</string>
+		<string>weibosdk</string>
+		<string>weibo</string>
+		<string>sinaweibosso</string>
+		<string>snssdk32</string>
+		<string>sharesdk</string>
+		<string>snssdk1180</string>
+		<string>snssdk1233</string>
+		<string>snssdk1128</string>
 		<string>weixinULAPI</string>
+		<string>weixin</string>
+		<string>wechat</string>
+		<string>mqqopensdkapiV4</string>
+		<string>mqzone</string>
+		<string>mqqwpa</string>
+		<string>wtloginmqq2</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqqopensdkminiapp</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqzoneopensdk</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqq</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqapi</string>
+		<string>douyinsharesdk</string>
+		<string>douyinopensdk</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -55,6 +116,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>TGCAppleID</key>
+	<string>id134567899900</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -95,5 +158,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>FacebookAppID</key>
+	<string>facebookappid</string>
+	<key>FacebookDisplayName</key>
+	<string>facebookdisplayname</string>
 </dict>
 </plist>

@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UILabel *masterIdLab;
 
 @property (nonatomic, strong) UILabel *contriLab;
+@property (nonatomic, strong) UILabel *countLab;
 
 @end
 
@@ -97,12 +98,24 @@
     }];
     self.masterIdLab = masterIdLab;
     
+    UILabel *countLab = [[UILabel alloc]init];
+    countLab.text = @"当前邀请的总人数:";
+    [countLab setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:countLab];
+    [countLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(masterIdLab.mas_bottom).offset(1);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(@(250));
+        make.height.equalTo(@(40));
+    }];
+    self.countLab = countLab;
+    
     UILabel *contriLab = [[UILabel alloc]init];
     contriLab.text = @"当前获得总贡献:";
     [contriLab setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:contriLab];
     [contriLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(masterIdLab.mas_bottom).offset(1);
+        make.top.equalTo(countLab.mas_bottom).offset(1);
         make.centerX.equalTo(self.view);
         make.width.equalTo(@(250));
         make.height.equalTo(@(40));
@@ -128,6 +141,8 @@
     
     [self getApprenticeList];
     
+    [self getInviteCount];
+    
     [self getSectInfo];
 }
 
@@ -135,9 +150,19 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)getInviteCount {
+    [RichOXSectInfo getInviteCount:0 onlyVerified:NO success:^(int inviteCount) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+            self.countLab.text = [NSString stringWithFormat:@"当前邀请的总人数:%d", inviteCount];
+        });
+    } failure:^(NSError * _Nonnull error) {
+            
+    }];
+}
+
+
 - (void) getAll {
-    NSString *userId = [RichOXBaseManager userId];
-    [RichOXSectContribution getContribution:userId apprenticeUid:nil success:^(int star, int deltaContribution) {
+    [RichOXSectInfo getContribution:nil success:^(int star, int deltaContribution) {
         NSLog(@"*******genContribution测试成功: contribution :%d, deltaContribution： %d", star, deltaContribution);
         [self getApprenticeList];
         

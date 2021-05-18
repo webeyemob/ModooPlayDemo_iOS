@@ -17,13 +17,15 @@
 
 #import "RichOXShareViewController.h"
 #import "ApprenticeViewController.h"
-#import "InviteAwardViewController.h"
+//#import "InviteAwardViewController.h"
 #import "RichOXMissionViewController.h"
 #import "ReportAppEventViewController.h"
 @import RichOXBase;
 @import RichOXFission_Moblink;
 @import RichOXSect;
 #import <Masonry/Masonry.h>
+#import "WXLoginViewController.h"
+#import "NewLoginViewController.h"
 
 #define WITHDRAW_TEST_MISSION_ID @""
 #define WXWITHDRAW_TEST_MISSION_ID @""
@@ -45,7 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [RichOXBaseManager setOverSea];
     [RichOXBaseManager initWithAppId:@""];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -54,8 +56,9 @@
     _sortedArray = @[@{
                          @"H5活动": @[@"活动测试页面"]},
                      @{@"基础功能":@[@"游客注册",@"绑定社交账号",@"微信用户注册", @"获取激励任务",@"激励任务记录查询",@"今日金币获取信息查询",@"获取提现信息",@"提现请求",@"提现微信"]},
+                     @{@"海外用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销"]},
                      @{@"分享":@[@"打开分享页面"]},
-                     @{@"宗门":@[@"获取弟子信息",@"招募奖励",@"产生贡献", @"现金兑换"]},
+                     @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面(R)", @"通用策略测试页面"]},
                      @{@"应用内事件": @[@"发送应用内事件"]}
     ];
@@ -186,20 +189,24 @@
         case 1://基础测试
             [self baseTest:testItem];
             break;
+            
+        case 2://海外用户测试
+            [self userNewAPITest:testItem];
+            break;
         
-        case 2://分享测试
+        case 3://分享测试
             [self shareTest:testItem];
             break;
             
-        case 3://宗门测试
+        case 4://宗门测试
             [self sectTest:testItem];
             break;
             
-        case 4://策略测试
+        case 5://策略测试
             [self strageTest:testItem];
             break;
             
-        case 5://应用内事件上报测试
+        case 6://应用内事件上报测试
             [self reportAppEventTest:testItem];
             break;
             
@@ -232,9 +239,9 @@
         }];
     } else if ([testItem isEqualToString:@"绑定社交账号"] || [testItem isEqualToString:@"社交账号绑定检查"]) {
         //todo 进入下一个页面登录社交账号
-        //WXLoginViewController *loginVC = [[WXLoginViewController alloc] init];
-        //loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
-        //[self presentViewController:loginVC animated:YES completion:nil];
+        WXLoginViewController *loginVC = [[WXLoginViewController alloc] init];
+        loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:loginVC animated:YES completion:nil];
     } else if ([testItem isEqualToString:@"获取用户信息"]) {
         [RichOXUser getUserInfo:^(RichOXUserData *userData) {
             NSLog(@"*******getUserInfo测试成功: userData: %@", [userData description]);
@@ -286,6 +293,43 @@
     }
 }
 
+- (void)userNewAPITest:(NSString *)testItem {
+    if ([testItem isEqualToString:@"游客注册"]) {
+        [RichOXUserManager registerUserId:nil success:^(RichOXUserObject *userData) {
+            NSLog(@"*******new registerUserId测试成功: userData: %@", [userData description]);
+        } failure:^(NSError *error) {
+            NSLog(@"*******registerUserId测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else if ([testItem isEqualToString:@"绑定社交账号"]) {
+        //todo 进入下一个页面登录社交账号
+        NewLoginViewController *loginVC = [[NewLoginViewController alloc] init];
+        loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:loginVC animated:YES completion:nil];
+    } else if ([testItem isEqualToString:@"获取用户信息"]) {
+        [RichOXUserManager getUserInfo:^(RichOXUserObject *userData) {
+            NSLog(@"*******new getUserInfo测试成功: userData: %@", [userData description]);
+            if (userData != nil) {
+                NSString *invitationCode = userData.invitationCode;
+                NSLog(@"*******当前用户的邀请码是====: %@ :", invitationCode);
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"*******getUserInfo测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else if ([testItem isEqualToString:@"获取邀请人基本信息"]) {
+        [RichOXUserManager getInviter: ^(RichOXUserBaseObject *userData) {
+            NSLog(@"*******getInviter测试成功: userData: %@", userData);
+        } failure:^(NSError *error) {
+            NSLog(@"*******getUserBaseInfo测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else if ([testItem isEqualToString:@"用户注销"]) {
+        [RichOXUserManager logOutUser:^{
+            NSLog(@"*******logOutUser 测试成功");
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******logOutUser测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    }
+}
+
 - (void)shareTest:(NSString *)testItem {
     RichOXShareViewController *vc = [[RichOXShareViewController alloc] init];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -298,21 +342,28 @@
         ApprenticeViewController *vc = [[ApprenticeViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:YES completion:nil];
-    } else if ([testItem isEqualToString:@"招募奖励"]) {
-       InviteAwardViewController *vc = [[InviteAwardViewController alloc] init];
-        vc.modalPresentationStyle = UIModalPresentationFullScreen;
-        [self presentViewController:vc animated:YES completion:nil];
     } else if ([testItem isEqualToString:@"产生贡献"]) {
-        [RichOXSectContribution genContribution:0 success:^(int star) {
+        [RichOXSectInfo genContribution:0 success:^(int star) {
             NSLog(@"*******genContribution测试成功: star :%d", star);
         } failure:^(NSError * _Nonnull error) {
             [self toastFailureInfo:@"genContribution" error:error];
         }];
-    } else if ([testItem isEqualToString:@"现金兑换"]) {
-        [RichOXSectContribution transform:^(RichOXSectTransformResult * _Nonnull result) {
-            NSLog(@"******* transform ******* 测试成功: %@", [result description]);
+    } else if ([testItem isEqualToString:@"获取宗门设置"]) {
+        [RichOXSectInfo getSetting:^(RichOXSectSettingData * _Nonnull data) {
+            NSLog(@"*******getSetting测试成功: data: %@", [data description]);
         } failure:^(NSError * _Nonnull error) {
-            [self toastFailureInfo:@"transform" error:error];
+            NSLog(@"*******getSetting测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else if ([testItem isEqualToString:@"获取邀请弟子排行"]) {
+        [RichOXSectInfo getRankingList:^(NSArray <RichOXSectRankingObject *>*rankingList) {
+            NSMutableString *desc = [NSMutableString new];
+            for (RichOXSectRankingObject *item in rankingList){
+                [desc appendString:[item description]];
+                [desc appendString:@";"];
+            }
+            NSLog(@"*******getRankingList 测试成功: data: %@", desc);
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getRankingList 测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
         }];
     }
 }

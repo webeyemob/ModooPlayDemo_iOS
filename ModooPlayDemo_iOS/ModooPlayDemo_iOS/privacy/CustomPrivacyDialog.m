@@ -88,7 +88,8 @@
 
 -(UITextView *)contentLabel {
     if (!_contentLabel) {
-        _contentLabel = [self getCustomContentViewWith:[UIColor greenColor] textSize:15.0 textColor:[UIColor blueColor] andFrame:CGRectMake(22, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.bgView.frame.size.width - 21 * 2, 150)];
+        _contentLabel = [self getCustomContentViewWith:[UIColor greenColor] textSize:15.0 textColor:[UIColor blueColor]];
+        _contentLabel.frame = CGRectMake(22, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.bgView.frame.size.width - 21 * 2, 150);
     }
     return _contentLabel;
 }

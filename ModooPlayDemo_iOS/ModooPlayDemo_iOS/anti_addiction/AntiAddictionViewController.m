@@ -19,7 +19,7 @@
  
  2、添加依赖库 libc++.tbd。
  */
-@interface AntiAddictionViewController () <AntiAddictionRealNameDelegate, AntiAddictionTimeLimitDelegate, AntiAddictionEventDelegate>
+@interface AntiAddictionViewController () <AntiAddictionRealNameDelegate, AntiAddictionTimeLimitDelegate, AntiAddictionEventDelegate,AntiAddictionHealthGameAdviceDelegate,AntiAddictionAgeTipIconDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *realNameBtn;
 
@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @property (nonatomic, strong) RealNameView *popView;
+@property (weak, nonatomic) IBOutlet UIView *ageTipIconView;
 
 @end
 
@@ -39,7 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [AntiAddictionSdk setAutoShowTimeLimitPage:YES];
+    //[AntiAddictionSdk setAutoShowTimeLimitPage:YES];
     
     [AntiAddictionEventManager registerDelegate:self];
 }
@@ -166,6 +167,49 @@
 
 - (void)onTimeLimt:(AntiAddictionTimeLimitEvent *)event {
     NSLog(@"+++++++ event is %@ ++++++", [event description]);
+}
+
+- (IBAction)ageTipBtn:(id)sender {
+    [AntiAddictionSdk showAgeTipIcon:self.ageTipIconView delegate:self];
+    
+}
+
+- (IBAction)healthGameAdviceBtn:(id)sender {
+    [AntiAddictionSdk showHealthGameAdvice:self];
+}
+
+#pragma mark <AntiAddictionAgeTipIconDelegate>
+- (void)onIconShown {
+    NSLog(@"***** age tip icon show");
+}
+
+- (void)iconShowFailed: (NSError *)error {
+    NSLog(@"***** age tip error:%ld, %@", error.code, error.localizedDescription);
+}
+
+- (void)onIconClick {
+    NSLog(@"***** age tip icon click");
+}
+
+- (void)dialogShown {
+    NSLog(@"***** age tip icon dialog show");
+}
+
+- (void)dialogClosed {
+    NSLog(@"***** age tip icon dialog closed");
+}
+
+#pragma mark <AntiAddictionHealthGameAdviceDelegate>
+- (void)onSplashShown {
+    NSLog(@"***** age tip splash show");
+}
+
+- (void)splashShowFailed: (NSError *)error {
+    NSLog(@"***** age tip splash error: %ld, %@", error.code, error.localizedDescription);
+}
+
+- (void)onSplashClosed {
+    NSLog(@"***** age tip splash closed");
 }
 
 @end

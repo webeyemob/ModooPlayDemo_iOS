@@ -68,7 +68,7 @@ target 'ModooPlayDemo_iOS' do
   pod 'RichOXSect'
   pod 'RichOXFission_Moblink'
   pod 'RichOXStageStrategy'
-  pod 'RichOXStageStrategy_R'
+  pod 'RichOXStageStrategy_F'
   pod 'RichOXNormalStrategy'
   pod 'RichOXShare'
   

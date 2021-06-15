@@ -11,16 +11,16 @@
 		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
 		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
 		1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */; };
-		1493CF43262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */; };
+		1493CF43262D60FB00834B1A /* StrategyFProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2B262D60FB00834B1A /* StrategyFProgessTableViewCell.m */; };
 		1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */; };
-		1493CF46262D60FB00834B1A /* StrategyRProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */; };
+		1493CF46262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF32262D60FB00834B1A /* StrategyProgessTableViewCell.m */; };
 		1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF34262D60FB00834B1A /* RichOXShareViewController.m */; };
 		1493CF48262D60FB00834B1A /* RichOXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF35262D60FB00834B1A /* RichOXViewController.m */; };
 		1493CF49262D60FB00834B1A /* RichOXActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */; };
 		1493CF4A262D60FB00834B1A /* RichOXMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF37262D60FB00834B1A /* RichOXMissionViewController.m */; };
-		1493CF4B262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */; };
+		1493CF4B262D60FB00834B1A /* RichOXStageStrategyFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3B262D60FB00834B1A /* RichOXStageStrategyFViewController.m */; };
 		1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */; };
-		1493CF4D262D60FB00834B1A /* RichOXStageStrategyRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */; };
+		1493CF4D262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF3D262D60FB00834B1A /* RichOXStageStrategyViewController.m */; };
 		14ABEF8326144E0700B1CEC6 /* RealNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ABEF8126144E0700B1CEC6 /* RealNameView.m */; };
 		14EF8C212653B00200190AF8 /* NewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF8C1E2653B00200190AF8 /* NewLoginViewController.m */; };
 		14EF8C222653B00200190AF8 /* WXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF8C1F2653B00200190AF8 /* WXLoginViewController.m */; };
@@ -75,23 +75,23 @@
 		1493CF27262D60FB00834B1A /* RichOXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXViewController.h; sourceTree = "<group>"; };
 		1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeTableViewCell.h; sourceTree = "<group>"; };
 		1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionTableViewCell.m; sourceTree = "<group>"; };
-		1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyProgessTableViewCell.m; sourceTree = "<group>"; };
-		1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyRProgessTableViewCell.h; sourceTree = "<group>"; };
-		1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyProgessTableViewCell.h; sourceTree = "<group>"; };
+		1493CF2B262D60FB00834B1A /* StrategyFProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyFProgessTableViewCell.m; sourceTree = "<group>"; };
+		1493CF2C262D60FB00834B1A /* StrategyProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyProgessTableViewCell.h; sourceTree = "<group>"; };
+		1493CF2E262D60FB00834B1A /* StrategyFProgessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyFProgessTableViewCell.h; sourceTree = "<group>"; };
 		1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionTableViewCell.h; sourceTree = "<group>"; };
 		1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeTableViewCell.m; sourceTree = "<group>"; };
-		1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyRProgessTableViewCell.m; sourceTree = "<group>"; };
+		1493CF32262D60FB00834B1A /* StrategyProgessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyProgessTableViewCell.m; sourceTree = "<group>"; };
 		1493CF33262D60FB00834B1A /* RichOXMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXMissionViewController.h; sourceTree = "<group>"; };
 		1493CF34262D60FB00834B1A /* RichOXShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXShareViewController.m; sourceTree = "<group>"; };
 		1493CF35262D60FB00834B1A /* RichOXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXViewController.m; sourceTree = "<group>"; };
 		1493CF36262D60FB00834B1A /* RichOXActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXActivityViewController.m; sourceTree = "<group>"; };
 		1493CF37262D60FB00834B1A /* RichOXMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXMissionViewController.m; sourceTree = "<group>"; };
 		1493CF39262D60FB00834B1A /* RichOXNormalStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXNormalStrategyViewController.h; sourceTree = "<group>"; };
-		1493CF3A262D60FB00834B1A /* RichOXStageStrategyRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyRViewController.h; sourceTree = "<group>"; };
-		1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyViewController.m; sourceTree = "<group>"; };
+		1493CF3A262D60FB00834B1A /* RichOXStageStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyViewController.h; sourceTree = "<group>"; };
+		1493CF3B262D60FB00834B1A /* RichOXStageStrategyFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyFViewController.m; sourceTree = "<group>"; };
 		1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXNormalStrategyViewController.m; sourceTree = "<group>"; };
-		1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyRViewController.m; sourceTree = "<group>"; };
-		1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyViewController.h; sourceTree = "<group>"; };
+		1493CF3D262D60FB00834B1A /* RichOXStageStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXStageStrategyViewController.m; sourceTree = "<group>"; };
+		1493CF3E262D60FB00834B1A /* RichOXStageStrategyFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXStageStrategyFViewController.h; sourceTree = "<group>"; };
 		14ABEF8126144E0700B1CEC6 /* RealNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealNameView.m; sourceTree = "<group>"; };
 		14ABEF8226144E0700B1CEC6 /* RealNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealNameView.h; sourceTree = "<group>"; };
 		14EF8C1B2653B00200190AF8 /* WXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXLoginViewController.h; sourceTree = "<group>"; };
@@ -206,10 +206,10 @@
 				1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */,
 				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
 				1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */,
-				1493CF2E262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
-				1493CF2B262D60FB00834B1A /* StrategyProgessTableViewCell.m */,
-				1493CF2C262D60FB00834B1A /* StrategyRProgessTableViewCell.h */,
-				1493CF32262D60FB00834B1A /* StrategyRProgessTableViewCell.m */,
+				1493CF2E262D60FB00834B1A /* StrategyFProgessTableViewCell.h */,
+				1493CF2B262D60FB00834B1A /* StrategyFProgessTableViewCell.m */,
+				1493CF2C262D60FB00834B1A /* StrategyProgessTableViewCell.h */,
+				1493CF32262D60FB00834B1A /* StrategyProgessTableViewCell.m */,
 			);
 			path = cellview;
 			sourceTree = "<group>";
@@ -218,11 +218,11 @@
 			isa = PBXGroup;
 			children = (
 				1493CF39262D60FB00834B1A /* RichOXNormalStrategyViewController.h */,
-				1493CF3A262D60FB00834B1A /* RichOXStageStrategyRViewController.h */,
-				1493CF3B262D60FB00834B1A /* RichOXStageStrategyViewController.m */,
+				1493CF3A262D60FB00834B1A /* RichOXStageStrategyViewController.h */,
+				1493CF3B262D60FB00834B1A /* RichOXStageStrategyFViewController.m */,
 				1493CF3C262D60FB00834B1A /* RichOXNormalStrategyViewController.m */,
-				1493CF3D262D60FB00834B1A /* RichOXStageStrategyRViewController.m */,
-				1493CF3E262D60FB00834B1A /* RichOXStageStrategyViewController.h */,
+				1493CF3D262D60FB00834B1A /* RichOXStageStrategyViewController.m */,
+				1493CF3E262D60FB00834B1A /* RichOXStageStrategyFViewController.h */,
 			);
 			path = strategy;
 			sourceTree = "<group>";
@@ -513,15 +513,15 @@
 				1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */,
 				83381EC725B45ECC00C19F5E /* NetworkTestViewController.m in Sources */,
 				14ABEF8326144E0700B1CEC6 /* RealNameView.m in Sources */,
-				1493CF43262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */,
+				1493CF43262D60FB00834B1A /* StrategyFProgessTableViewCell.m in Sources */,
 				1493CF48262D60FB00834B1A /* RichOXViewController.m in Sources */,
-				1493CF4D262D60FB00834B1A /* RichOXStageStrategyRViewController.m in Sources */,
+				1493CF4D262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */,
 				83D5D5E725AEEAA20050824E /* AppDelegate.m in Sources */,
 				1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */,
 				83381EC425B45EC500C19F5E /* BannerViewController.m in Sources */,
 				83381EC125B45EC500C19F5E /* InterstitialViewController.m in Sources */,
 				1493CF4A262D60FB00834B1A /* RichOXMissionViewController.m in Sources */,
-				1493CF46262D60FB00834B1A /* StrategyRProgessTableViewCell.m in Sources */,
+				1493CF46262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */,
 				83D5D5F825AEEAA40050824E /* main.m in Sources */,
 				1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */,
 				1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */,
@@ -532,7 +532,7 @@
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,
-				1493CF4B262D60FB00834B1A /* RichOXStageStrategyViewController.m in Sources */,
+				1493CF4B262D60FB00834B1A /* RichOXStageStrategyFViewController.m in Sources */,
 				1493CF49262D60FB00834B1A /* RichOXActivityViewController.m in Sources */,
 				834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */,
 				83D5D5EA25AEEAA20050824E /* SceneDelegate.m in Sources */,
@@ -696,6 +696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.modooplay.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -715,8 +716,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W4NFA7PGRX;
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fmk",
@@ -729,6 +728,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.modooplay.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

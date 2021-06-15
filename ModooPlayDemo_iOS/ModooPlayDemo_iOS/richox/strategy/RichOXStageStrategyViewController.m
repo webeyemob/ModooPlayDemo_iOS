@@ -1,45 +1,48 @@
 //
-//  TestStageStrategyViewController.m
+//  RichOXStageStrategyViewController.m
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2021/1/14.
-//  Copyright © 2021 TaurusXAds. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import "RichOXStageStrategyViewController.h"
-@import RichOX;
 #import "StrategyProgessTableViewCell.h"
-#import "UIView+Toast.h"
+@import RichOXBase;
+@import RichOXStageStrategy;
 #import <Masonry/Masonry.h>
 #import "macro.h"
-@import RichOXStageStrategy;
-@import RichOXBase;
+#import "UIView+Toast.h"
 
 @interface RichOXStageStrategyViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray<RichOXStageStrategyItem *> * strategyList;
-@property (nonatomic, strong) UITableView *progressTab;
+@property (nonatomic, strong) NSArray <RichOXStageStrategyTask *>* taskList;
 
-@property (nonatomic, strong) RichOXStageStrategyInstance *stragegyInstance;
+@property (nonatomic, strong) UITableView *progressTab;
+@property (nonatomic, strong) UIView *buttonContainer;
+
+@property (nonatomic, strong) NSArray <RichOXSSProgressInfo *> *progressInfos;
+@property (nonatomic, strong) NSArray <RichOXSSWithdrawStatus *>*withdrawStatus;
 
 @property (nonatomic, strong) UITextField *stragegyIdText;
 @property (nonatomic, strong) NSString *lastId;
 
-@property (nonatomic, strong) UITextField *missionIdText;
+@property (nonatomic, strong) RichOXStageStrategyInstance *stragegyInstance;
 
 @end
 
-#define TEST_STAGESTRATEGY_ID @"richox_ios_test"
-#define TEST_STAGESTRATEGY_MissionID_1 @"test_stagestrage"
-#define TEST_STAGESTRATEGY_MissionID_2 @"test_stagestrage2"
+#define TEST_STAGESTRATEGY_R_ID @"46"
 
 @implementation RichOXStageStrategyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    // Do any additional setup after loading the view.
     
     UIView *header = [[UIView alloc] init];
+    header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
     [header mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
@@ -48,7 +51,7 @@
     }];
     
     UILabel *titleLab =  [[UILabel alloc]init];
-    titleLab.text = @"阶梯红包测试";
+    titleLab.text = @"阶梯策略测试";
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [header addSubview:titleLab];
     [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,9 +80,8 @@
         make.height.equalTo(@1);
     }];
     
-    // Do any additional setup after loading the view.
     UILabel *stagelab = [[UILabel alloc] init];
-    stagelab.text = @"阶梯红包配置 id: ";
+    stagelab.text = @"阶梯策略 id: ";
     [self.view addSubview:stagelab];
     
     [stagelab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -102,10 +104,9 @@
     
     self.stragegyIdText = textField;
     
-    
     UIButton *syncBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:syncBtn];
-    [syncBtn setTitle:@"Sync stage strage" forState:UIControlStateNormal];
+    [syncBtn setTitle:@"Sync strage" forState:UIControlStateNormal];
     [syncBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [syncBtn addTarget:self action:@selector(prepareData) forControlEvents:UIControlEventTouchUpInside];
     
@@ -116,50 +117,26 @@
         make.height.equalTo(@(30));
     }];
     
-    
-    UILabel *missionlab = [[UILabel alloc] init];
-    missionlab.text = @"阶梯红包任务id: ";
-    [self.view addSubview:missionlab];
-    
-    [missionlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(syncBtn.mas_bottom).offset(20);
-        make.left.equalTo(self.view).offset(20);
-        make.width.equalTo(@(140));
-        make.height.equalTo(@(30));
+    self.buttonContainer = [[UIView alloc] init];
+    [self.view addSubview:self.buttonContainer];
+    [self.buttonContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(syncBtn.mas_bottom).offset(5);
+        make.height.equalTo(@100);
     }];
-    
-    UITextField *missionTextField = [[UITextField alloc]init];
-    [self.view addSubview:missionTextField];
-    missionTextField.borderStyle = UITextBorderStyleRoundedRect;
-
-    [missionTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(missionlab);
-        make.left.equalTo(missionlab.mas_right).offset(20);
-        make.right.equalTo(self.view).offset(-20);
-        make.height.equalTo(@(30));
-    }];
-    
-    self.missionIdText = missionTextField;
     
     [self.view addSubview:self.progressTab];
-    
     [self.progressTab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.missionIdText.mas_bottom).offset(20);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.buttonContainer.mas_bottom).offset(5);
     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.stragegyInstance) {
-        self.strategyList = [self.stragegyInstance getList];
-        [self.progressTab reloadData];
-    }
-}
-
-- (void) closePage {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    if (self.stragegyInstance) {
+//        self.strategyList = [self.stragegyInstance getList];
+//        [self.progressTab reloadData];
+//    }
 }
 
 /*
@@ -171,6 +148,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void) closePage {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (UITableView *)progressTab {
     if (!_progressTab) {
@@ -187,97 +168,167 @@
     return _progressTab;
 }
 
-- (void)prepareData {
-    NSString *userId = [RichOXBaseManager userId];
-    
-    if (userId == nil) {
-        [RichOXUser registerUserId:nil initInfo: nil success:^(RichOXUserData * _Nonnull userData) {
-            [self getStageStrategyList];
-            
+- (void) prepareData {
+    if (self.stragegyIdText.text != nil && ![self.stragegyIdText.text isEqualToString:@""]) {
+        if (self.stragegyInstance == nil || ![self.stragegyIdText.text isEqualToString:self.lastId]) {
+            self.stragegyInstance = [RichOXStageStrategyInstance getStageStrategy:self.stragegyIdText.text];
+        }
+        self.lastId = self.stragegyIdText.text;
+        [self.stragegyInstance syncList:^(RichOXStageStrategySetting *strategySetting) {
+            self.strategyList = strategySetting.withdrawSetting;
+            self.taskList = strategySetting.tasks;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self addButtonToContainer];
+                [self.progressTab reloadData];
+            });
+            [self.stragegyInstance syncCurrentPrize:^(RichOXStageStrategyStatus *status) {
+                self.progressInfos = status.progressInfos;
+                self.withdrawStatus = status.withdrawStatus;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.progressTab reloadData];
+                });
+            } failure:^(NSError * _Nonnull error) {
+                NSLog(@"sync stage strategy failed: %@", error);
+            }];
         } failure:^(NSError * _Nonnull error) {
-            NSLog(@"register user failed: %@", error);
+            NSLog(@"sync stage strategy failed: %@", error);
         }];
     } else {
-        [self getStageStrategyList];
+        [self.view makeToast:@"请输入策略ID" duration:3.0 position:CSToastPositionCenter];
     }
 }
 
-- (void) getStageStrategyList {
-    if (self.stragegyInstance == nil  || ![self.lastId isEqualToString:self.stragegyIdText.text]) {
-        if (self.stragegyIdText.text != nil && ![self.stragegyIdText.text isEqualToString:@""]) {
-            self.stragegyInstance = [RichOXStageStrategyInstance getStageStrategy:self.stragegyIdText.text];
-            self.lastId = self.stragegyIdText.text;
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.view makeToast:@"please input stragegy id " duration:3.0 position:CSToastPositionCenter];
-            });
-            return;
-        }
+- (void)addButtonToContainer {
+    NSUInteger count = [self.taskList count];
+    float width = (ScreenWidth - (count + 1) *30)/count;
+    for (int i = 0; i < count; i++) {
+        RichOXStageStrategyTask *task = self.taskList[i];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.tag = i;
+        btn.frame = CGRectMake(30 + (30 + width)*i, 20, width, 60);
+        btn.backgroundColor = [UIColor greenColor];
+        [btn setTitle:[NSString stringWithFormat:@"%.2f", task.prizeAmount] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(doTask:) forControlEvents:UIControlEventTouchUpInside];
+        [self.buttonContainer addSubview:btn];
+    }
+}
+
+- (void)doTask:(UIButton *)btn {
+    RichOXStageStrategyTask *task = self.taskList[btn.tag];
+    float amount = task.prizeAmount;
+    if (task.prizeType == RICHOX_SS_PRIZE_TYPE_MAX) {
+        amount = amount * 0.5;
     }
     
-    [self.stragegyInstance syncList:^(NSArray<RichOXStageStrategyItem *> * _Nonnull strategyList) {
-        self.strategyList = strategyList;
+    [self.stragegyInstance doMission:task.taskId prizeAmount:amount success:^(RichOXStageStrategyTaskResult *result){
+        self.progressInfos = result.progressInfos;
         dispatch_async(dispatch_get_main_queue(), ^{
-        [self.progressTab reloadData];
+            [self.progressTab reloadData];
         });
     } failure:^(NSError * _Nonnull error) {
-        NSLog(@"sync stage strategy failed: %@", error);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *message = [NSString stringWithFormat:@"sync stage strategy failed: %zd", error.code];
-            [self.view makeToast:message duration:3.0 position:CSToastPositionCenter];
-        });
+        NSLog(@"doMission failed: %@", error);
     }];
 }
 
 #pragma mark <UITableViewDelegate>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.strategyList == nil) {
-        return 0;
+    if (section == 0) {
+        return self.progressInfos != nil? [self.progressInfos count] : 0;
+    } else {
+        return self.strategyList != nil? [self.strategyList count] : 0;
     }
-    return [self.strategyList count];
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"进度值";
+    } else {
+        return @"提现进度";
+    }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    if (indexPath.section == 0) {
+        return 40;
+    } else {
+        return 100;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"pregressCellIdentifier";
-    StrategyProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[StrategyProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    RichOXStageStrategyItem *item = self.strategyList[indexPath.row];
-    
-    [cell setName:item.name progress:item.percent/100 packetId:item.packageId block:^(NSString * _Nonnull packetId) {
-        if (item.percent < 100) {
-            [self.stragegyInstance doMission:packetId missionId:self.missionIdText.text bonus:0 success:^(NSArray<RichOXStageStrategyItem *> * _Nonnull strategyList) {
-                self.strategyList = strategyList;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.progressTab reloadData];
-                });
-            } failure:^(NSError * _Nonnull error) {
-                NSLog(@"doMission failed: %@", error);
-            }];
-        } else {
-            RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"阶梯红包提现"];
-            
-            [self.stragegyInstance withdraw:item.packageId userDegree:0 info:info success:^{
-                
-            } failure:^(NSError * _Nonnull error) {
-                NSLog(@"withdraw failed: %@", error);
-            }];
+    if (indexPath.section == 0) {
+        static NSString *assetIdentifier = @"ssrprogressCellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:assetIdentifier];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:assetIdentifier];
         }
-    }];
+        
+        RichOXSSProgressInfo *progressInfo = self.progressInfos[indexPath.row];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@: %.2f", progressInfo.progressName, progressInfo.progressValue];
+        return cell;
+    } else {
+        static NSString *cellIdentifier = @"ssrwithdrawCellIdentifier";
+        StrategyProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[StrategyProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        
+        RichOXStageStrategyItem *item = self.strategyList[indexPath.row];
+        double progress = 0;
+        RICHOX_SS_WITHDRAW_STATUS withdrawStatus = RICHOX_SS_WITHDRAW_STATUS_NO;
+            
+        int status = 0; //只有进度值条件
+            
+        BOOL checkInvite = YES;
+        if (self.withdrawStatus != nil) {
+            for (RichOXSSWithdrawStatus *statu in self.withdrawStatus) {
+                if ([statu.taskId isEqualToString:item.packageId]) {
+                    for(RichOXSSProgressInfo *temp in self.progressInfos) {
+                        if ([temp.progressId isEqualToString:statu.progressInfos[0].progressId]) {
+                            progress = temp.progressValue/statu.progressInfos[0].progressRank;
+                        }
+                    }
     
-    return cell;
+                    withdrawStatus = statu.status;
+                    if (statu.needInviteUserCount > 0 && statu.alreayInviteUserCount < statu.needInviteUserCount) {
+                        checkInvite = NO;
+                    }
+                }
+            }
+        }
+            
+        if (withdrawStatus == 100) {
+            status = 2; //已提现
+        } else {
+            if (progress >= 1.0 && !checkInvite) {
+                status = 1;  //进度值满足，邀请不满足
+            }
+        }
+            
+        [cell setName:item.packageId progress:progress packetId:item.packageId status: status block:^() {
+            if (status == 1) {
+                //去邀请
+            } else {
+                RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"阶梯红包提现"];
+                [self.stragegyInstance withdraw:item.packageId info:info success:^{
+                    
+                } failure:^(NSError * _Nonnull error) {
+                    NSLog(@"withdraw failed: %@", error);
+                }];
+            }
+        }];
+        
+        return cell;
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

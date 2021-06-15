@@ -1,28 +1,27 @@
 //
-//  StrategyRProgessTableViewCell.m
+//  StrategyFProgessTableViewCell.m
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2021/1/14.
-//  Copyright © 2021 Moodoo Play. All rights reserved.
+//  Copyright © 2021 TaurusXAds. All rights reserved.
 //
 
-#import "StrategyRProgessTableViewCell.h"
-#import "macro.h"
+#import "StrategyFProgessTableViewCell.h"
 
 
-@interface StrategyRProgessTableViewCell ()
+@interface StrategyFProgessTableViewCell ()
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIButton *doMissionBtn;
 @property (nonatomic, strong) UIProgressView *progress;
 @property (nonatomic, strong) NSString *packetId;
 
-@property (nonatomic, strong) StrategyRProgessDoWithdraw block;
+@property (nonatomic, strong) StrategyFProgessDoMission block;
 
 @end
 
 
-@implementation StrategyRProgessTableViewCell
+@implementation StrategyFProgessTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -44,19 +43,16 @@
         self.nameLabel = nameLabel;
 
         UIButton *doMissionBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        doMissionBtn.frame = CGRectMake(ScreenWidth-20-100, 10, 100, 40);
+        doMissionBtn.frame = CGRectMake(self.contentView.bounds.size.width-20-80, 10, 80, 40);
         doMissionBtn.backgroundColor = [UIColor blueColor];
         [doMissionBtn addTarget:self action:@selector(doMission) forControlEvents:UIControlEventTouchUpInside];
         
-        [doMissionBtn setTitle:@"提现" forState:UIControlStateNormal];
-        [doMissionBtn setTitle:@"继续努力" forState:UIControlStateDisabled];
+        [doMissionBtn setTitle:@"完成任务" forState:UIControlStateNormal];
         [doMissionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [doMissionBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [self.contentView addSubview:doMissionBtn];
         self.doMissionBtn = doMissionBtn;
-        self.doMissionBtn.enabled = NO;
  
-        UIProgressView *progress =  [[UIProgressView alloc] initWithFrame:CGRectMake(20, 60, ScreenWidth - 40, 30)];
+        UIProgressView *progress =  [[UIProgressView alloc] initWithFrame:CGRectMake(20, 60, self.contentView.bounds.size.width - 40, 30)];
         progress.progressViewStyle = UIProgressViewStyleBar;
         progress.progressTintColor = [UIColor redColor];
         progress.trackTintColor = [UIColor yellowColor];
@@ -69,28 +65,15 @@
  
 
 - (void)doMission {
-    self.block();
+    self.block(self.packetId);
 }
 
-- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId  status:(int)status block:(StrategyRProgessDoWithdraw)block {
+- (void)setName:(NSString *)name progress: (double)progress packetId:(NSString *)packetId block:(StrategyFProgessDoMission)block {
     self.nameLabel.text = name;
+    self.progress.progress = progress;
     self.packetId = packetId;
-    if (status == 2){
-        self.doMissionBtn.enabled = NO;
-        [self.doMissionBtn setTitle:@"已提现" forState:UIControlStateDisabled];
-    }
     if (progress >= 1.0) {
-        self.progress.progress = 1.0;
-        if (status == 1) {
-            self.doMissionBtn.enabled = YES;
-            [self.doMissionBtn setTitle:@"去邀请" forState:UIControlStateNormal];
-        } else {
-            [self.doMissionBtn setTitle:@"去提现" forState:UIControlStateNormal];
-            self.doMissionBtn.enabled = YES;
-        }
-    } else {
-        self.progress.progress = progress;
-        self.doMissionBtn.enabled = NO;
+        [self.doMissionBtn setTitle:@"提现" forState:UIControlStateNormal];
     }
     self.block = block;
 }

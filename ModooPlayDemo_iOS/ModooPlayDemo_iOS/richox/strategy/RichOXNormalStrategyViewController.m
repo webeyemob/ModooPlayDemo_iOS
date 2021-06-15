@@ -7,7 +7,7 @@
 //
 
 #import "RichOXNormalStrategyViewController.h"
-#import "StrategyRProgessTableViewCell.h"
+#import "StrategyProgessTableViewCell.h"
 @import RichOXBase;
 @import RichOXNormalStrategy;
 #import <Masonry/Masonry.h>
@@ -470,9 +470,9 @@
         return cell;
     } else {
         static NSString *cellIdentifier = @"pregressCellIdentifier";
-        StrategyRProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        StrategyProgessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[StrategyRProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell = [[StrategyProgessTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
             
         RichOXNormalStrategyItem *item = self.strategyList[indexPath.row];

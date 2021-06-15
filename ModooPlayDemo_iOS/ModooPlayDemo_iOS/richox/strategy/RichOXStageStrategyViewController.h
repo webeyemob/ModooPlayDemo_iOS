@@ -3,7 +3,7 @@
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2021/1/14.
-//  Copyright © 2021 TaurusXAds. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

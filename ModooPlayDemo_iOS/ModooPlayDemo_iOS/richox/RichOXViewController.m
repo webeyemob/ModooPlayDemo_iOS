@@ -11,8 +11,8 @@
 #import "UIView+Toast.h"
 #import "RichOXActivityViewController.h"
 #import "RichOXShareViewController.h"
+#import "RichOXStageStrategyFViewController.h"
 #import "RichOXStageStrategyViewController.h"
-#import "RichOXStageStrategyRViewController.h"
 #import "RichOXNormalStrategyViewController.h"
 
 #import "RichOXShareViewController.h"
@@ -59,7 +59,7 @@
                      @{@"海外用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销"]},
                      @{@"分享":@[@"打开分享页面"]},
                      @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
-                     @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面(R)", @"通用策略测试页面"]},
+                     @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面"]},
                      @{@"应用内事件": @[@"发送应用内事件"]}
     ];
     
@@ -370,11 +370,11 @@
 
 - (void)strageTest:(NSString *)testItem {
     if ([testItem isEqualToString:@"阶梯策略测试页面(F)"]) {
-        RichOXStageStrategyViewController *testPage = [[RichOXStageStrategyViewController alloc] init];
+        RichOXStageStrategyFViewController *testPage = [[RichOXStageStrategyFViewController alloc] init];
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
-    } else if ([testItem isEqualToString:@"阶梯策略测试页面(R)"]) {
-        RichOXStageStrategyRViewController *testPage = [[RichOXStageStrategyRViewController alloc] init];
+    } else if ([testItem isEqualToString:@"阶梯策略测试页面"]) {
+        RichOXStageStrategyViewController *testPage = [[RichOXStageStrategyViewController alloc] init];
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
     } else if ([testItem isEqualToString:@"通用策略测试页面"]) {

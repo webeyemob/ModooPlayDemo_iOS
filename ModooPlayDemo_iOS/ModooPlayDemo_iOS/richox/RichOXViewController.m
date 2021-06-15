@@ -295,7 +295,7 @@
 
 - (void)userNewAPITest:(NSString *)testItem {
     if ([testItem isEqualToString:@"游客注册"]) {
-        [RichOXUserManager registerUserId:nil success:^(RichOXUserObject *userData) {
+        [RichOXUserManager registerUserId:^(RichOXUserObject *userData) {
             NSLog(@"*******new registerUserId测试成功: userData: %@", [userData description]);
         } failure:^(NSError *error) {
             NSLog(@"*******registerUserId测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);

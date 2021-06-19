@@ -26,6 +26,7 @@
 #import <Masonry/Masonry.h>
 #import "WXLoginViewController.h"
 #import "NewLoginViewController.h"
+#import "RichOXNormalStrategyCustomRuleViewController.h"
 
 #define WITHDRAW_TEST_MISSION_ID @""
 #define WXWITHDRAW_TEST_MISSION_ID @""
@@ -59,7 +60,7 @@
                      @{@"海外用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销"]},
                      @{@"分享":@[@"打开分享页面"]},
                      @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
-                     @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面"]},
+                     @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
                      @{@"应用内事件": @[@"发送应用内事件"]}
     ];
     
@@ -379,6 +380,10 @@
         [self presentViewController:testPage animated:YES completion:nil];
     } else if ([testItem isEqualToString:@"通用策略测试页面"]) {
         RichOXNormalStrategyViewController *testPage = [[RichOXNormalStrategyViewController alloc] init];
+        testPage.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:testPage animated:YES completion:nil];
+    } else if ([testItem isEqualToString:@"自定义规则发放奖励"]) {
+        RichOXNormalStrategyCustomRuleViewController *testPage = [[RichOXNormalStrategyCustomRuleViewController alloc] init];
         testPage.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:testPage animated:YES completion:nil];
     }

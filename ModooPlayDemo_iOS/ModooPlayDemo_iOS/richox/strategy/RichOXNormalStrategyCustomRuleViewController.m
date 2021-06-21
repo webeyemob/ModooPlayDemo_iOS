@@ -35,6 +35,8 @@
 
 @property (nonatomic, strong) UIButton *showRewardBtn;
 
+@property (nonatomic) BOOL canBeRewarded;
+
 @end
 
 #define TEST_NORMALSTRATEGY_CUSTOMRULE_APPID @""
@@ -200,7 +202,6 @@
 */
 
 - (void)initAds {
-    [TXAD setTestServer:@""];
     [TXAD setTestMode:YES];
     [TXAD initWithAppId:TEST_NORMALSTRATEGY_CUSTOMRULE_APPID];
 }
@@ -214,6 +215,7 @@
         self.rewardedAd = [[TXADRewardedVideoAd alloc] initWithAdUnitId:TEST_NORMALSTRATEGY_CUSTOMRULE_ADID];
         self.rewardedAd.delegate = self;
     }
+    self.canBeRewarded = NO;
     [self.rewardedAd loadAd];
 }
 
@@ -235,7 +237,18 @@
 
 - (void)txAdRewardedVideo:(TXADRewardedVideoAd *)rewardedVideoAd didReward:(TXADILineItem *)lineItem item:(TXADRewardItem *)item {
     NSLog(@"txAdRewardedVideo didReward, adUnitId is %@, RewardItem is: %@, TId: %@", rewardedVideoAd.adUnitId, item, [lineItem getTId]);
-    [self doTask:[lineItem getTId]];
+    self.canBeRewarded = YES;
+}
+
+
+- (void)txAdRewardedVideo:(TXADRewardedVideoAd *)rewardedVideoAd didClose:(TXADILineItem *)lineItem {
+    NSLog(@"txAdRewardedVideoDidClose, adUnitId is %@, TId:%@", rewardedVideoAd.adUnitId,[lineItem getTId]);
+    
+    self.showRewardBtn.enabled = NO;
+    if (self.canBeRewarded) {
+        [self doTask:[lineItem getTId]];
+        self.canBeRewarded = NO;
+    }
 }
 
 - (void)getTaskProcess {

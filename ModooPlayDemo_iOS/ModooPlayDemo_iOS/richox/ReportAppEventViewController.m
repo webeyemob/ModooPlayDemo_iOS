@@ -10,6 +10,7 @@
 @import RichOXBase;
 #import "Masonry.h"
 #import "macro.h"
+#import "UIView+Toast.h"
 
 @interface ReportAppEventViewController () <UITextFieldDelegate>
 
@@ -36,7 +37,7 @@
     }];
         
     UILabel *titleLab =  [[UILabel alloc]init];
-    titleLab.text = @"发送应用内事件";
+    titleLab.text = @"应用内事件";
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [header addSubview:titleLab];
     [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -152,6 +153,20 @@
         make.height.equalTo(@(30));
     }];
     
+    UIButton *getEventValueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:getEventValueBtn];
+    [getEventValueBtn setTitle:@"获取事件值" forState:UIControlStateNormal];
+    [getEventValueBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [getEventValueBtn setTitleColor:[UIColor colorWithRed:135.0/255.0 green:216.0/255.0 blue:80.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
+    [getEventValueBtn setTitleColor:[UIColor lightGrayColor]  forState:UIControlStateDisabled];
+    [getEventValueBtn addTarget:self action:@selector(getEventValue) forControlEvents:UIControlEventTouchUpInside];
+    
+    [getEventValueBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(sendBtn.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(@(150));
+        make.height.equalTo(@(30));
+    }];
 }
 
 - (void) closePage {
@@ -196,6 +211,20 @@
             [RichOXBaseManager reportAppEvent:self.nameText.text eventValue:nil];
         }
     }
+    
+}
+
+- (void)getEventValue {
+    if (self.nameText.text == nil || [self.nameText.text isEqualToString:@""]) {
+        return;
+    }
+    
+    [RichOXBaseManager getAppEventValue:self.nameText.text block:^(NSString *eventName, NSString *eventValue){
+        NSLog(@"eventName:%@, eventValue:%@", eventName, eventValue);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:[NSString stringWithFormat:@"eventValue is %@",eventValue] duration:5.0 position:CSToastPositionCenter];
+        });
+    }];
     
 }
 /*

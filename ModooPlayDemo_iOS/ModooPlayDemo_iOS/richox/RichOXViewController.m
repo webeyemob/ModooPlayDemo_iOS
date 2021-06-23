@@ -61,7 +61,7 @@
                      @{@"分享":@[@"打开分享页面"]},
                      @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
-                     @{@"应用内事件": @[@"发送应用内事件"]}
+                     @{@"应用内事件": @[@"应用内事件"]}
     ];
     
     UIView *header = [[UIView alloc] init];
@@ -391,7 +391,7 @@
 
 - (void)reportAppEventTest:(NSString *)testItem {
     ReportAppEventViewController *testPage = [[ReportAppEventViewController alloc] init];
-    
+    testPage.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:testPage animated:YES completion:nil];
 }
 

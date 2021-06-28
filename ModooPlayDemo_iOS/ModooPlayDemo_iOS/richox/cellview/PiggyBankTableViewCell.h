@@ -14,7 +14,7 @@ typedef void (^PiggyBankWithdrawOnClick)(void);
 
 @interface PiggyBankTableViewCell : UITableViewCell
 
-- (void)setName:(NSString *)name amount: (double)amount assetName: (NSString *)assetName block:(PiggyBankWithdrawOnClick)block;
+- (void)setName:(NSString *)name amount: (double)amount assetName: (NSString *)assetName canWithdraw:(BOOL)canWithdraw block:(PiggyBankWithdrawOnClick)block;
 
 @end
 

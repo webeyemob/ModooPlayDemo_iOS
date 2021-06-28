@@ -130,8 +130,10 @@
     }
     
     RichOXPiggyBankObject *item = self.piggyBanks[indexPath.row];
+    //判断当前是不是第二天
+    BOOL canWithdraw = [self theTaskIsDoneYestoday:item.updateTime];
     
-    [cell setName:item.piggyBankName amount:item.prizeAmount assetName:item.toAssetName block:^{
+    [cell setName:item.piggyBankName amount:item.prizeAmount assetName:item.toAssetName canWithdraw:canWithdraw block:^{
         [RichOXPiggyBank piggyBankWithdraw:item.piggyBankId success:^() {
             [self prepareData];
         } failure:^(NSError * _Nonnull error) {
@@ -140,6 +142,13 @@
     }];
     
     return cell;
+}
+
+- (BOOL)theTaskIsDoneYestoday:(long)updateTime {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:updateTime/1000.0];
+    
+    NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:[NSDate date] toDate:date options:0];
+    return (comps.day + 1 == 0);
 }
 
 /*

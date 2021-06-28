@@ -67,11 +67,15 @@
     self.block();
 }
 
-- (void)setName:(NSString *)name amount: (double)amount assetName: (NSString *)assetName block:(PiggyBankWithdrawOnClick)block {
+- (void)setName:(NSString *)name amount: (double)amount assetName: (NSString *)assetName canWithdraw:(BOOL)canWithdraw block:(PiggyBankWithdrawOnClick)block {
     self.nameLabel.text = name;
     self.amountLabel.text = [NSString stringWithFormat:@"%.2f %@", amount, assetName ];
-    if (amount > 0){
+    if (amount > 0 && canWithdraw){
         self.doMissionBtn.enabled = YES;
+        [self.doMissionBtn setTitle:@"提取" forState:UIControlStateNormal];
+    } else if (amount > 0){
+        [self.doMissionBtn setTitle:@"明天提取" forState:UIControlStateNormal];
+        self.doMissionBtn.enabled = NO;
     } else {
         self.doMissionBtn.enabled = NO;
     }

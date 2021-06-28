@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1415A93226896AF100DDCAD1 /* PiggyBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1415A93026896AF100DDCAD1 /* PiggyBankViewController.m */; };
+		1415A93526896B0000DDCAD1 /* PiggyBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */; };
 		1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */; };
 		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
 		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
@@ -65,6 +67,10 @@
 
 /* Begin PBXFileReference section */
 		030AF96E4A2EAF4D6B442698 /* Pods-ModooPlayDemo_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModooPlayDemo_iOS.debug.xcconfig"; path = "Target Support Files/Pods-ModooPlayDemo_iOS/Pods-ModooPlayDemo_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1415A93026896AF100DDCAD1 /* PiggyBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiggyBankViewController.m; sourceTree = "<group>"; };
+		1415A93126896AF100DDCAD1 /* PiggyBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiggyBankViewController.h; sourceTree = "<group>"; };
+		1415A93326896B0000DDCAD1 /* PiggyBankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiggyBankTableViewCell.h; sourceTree = "<group>"; };
+		1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiggyBankTableViewCell.m; sourceTree = "<group>"; };
 		1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAppEventViewController.m; sourceTree = "<group>"; };
 		1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAppEventViewController.h; sourceTree = "<group>"; };
 		1493CF20262D60FB00834B1A /* ApprenticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeViewController.h; sourceTree = "<group>"; };
@@ -173,6 +179,8 @@
 		1493CF1D262D60FB00834B1A /* richox */ = {
 			isa = PBXGroup;
 			children = (
+				1415A93126896AF100DDCAD1 /* PiggyBankViewController.h */,
+				1415A93026896AF100DDCAD1 /* PiggyBankViewController.m */,
 				14EF8C1A2653B00200190AF8 /* App */,
 				1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */,
 				1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */,
@@ -205,6 +213,8 @@
 		1493CF28262D60FB00834B1A /* cellview */ = {
 			isa = PBXGroup;
 			children = (
+				1415A93326896B0000DDCAD1 /* PiggyBankTableViewCell.h */,
+				1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */,
 				1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */,
 				1493CF30262D60FB00834B1A /* ApprenticeTableViewCell.m */,
 				1493CF2F262D60FB00834B1A /* MissionTableViewCell.h */,
@@ -526,6 +536,7 @@
 				83381EC425B45EC500C19F5E /* BannerViewController.m in Sources */,
 				83381EC125B45EC500C19F5E /* InterstitialViewController.m in Sources */,
 				1493CF4A262D60FB00834B1A /* RichOXMissionViewController.m in Sources */,
+				1415A93526896B0000DDCAD1 /* PiggyBankTableViewCell.m in Sources */,
 				1493CF46262D60FB00834B1A /* StrategyProgessTableViewCell.m in Sources */,
 				83D5D5F825AEEAA40050824E /* main.m in Sources */,
 				1493CF45262D60FB00834B1A /* ApprenticeTableViewCell.m in Sources */,
@@ -543,6 +554,7 @@
 				834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */,
 				83D5D5EA25AEEAA20050824E /* SceneDelegate.m in Sources */,
 				1493CF47262D60FB00834B1A /* RichOXShareViewController.m in Sources */,
+				1415A93226896AF100DDCAD1 /* PiggyBankViewController.m in Sources */,
 				83381EC225B45EC500C19F5E /* FeedListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

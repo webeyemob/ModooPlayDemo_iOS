@@ -3,7 +3,7 @@
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2021/1/28.
-//  Copyright © 2021 moodoo. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import "RichOXViewController.h"
@@ -27,6 +27,7 @@
 #import "WXLoginViewController.h"
 #import "NewLoginViewController.h"
 #import "RichOXNormalStrategyCustomRuleViewController.h"
+#import "PiggyBankViewController.h"
 
 #define WITHDRAW_TEST_MISSION_ID @""
 #define WXWITHDRAW_TEST_MISSION_ID @""
@@ -61,7 +62,8 @@
                      @{@"分享":@[@"打开分享页面"]},
                      @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
-                     @{@"应用内事件": @[@"应用内事件"]}
+                     @{@"应用内事件": @[@"应用内事件"]},
+                     @{@"储蓄罐": @[@"完成策略任务之后再进入该测试页面"]}
     ];
     
     UIView *header = [[UIView alloc] init];
@@ -207,8 +209,12 @@
             [self strageTest:testItem];
             break;
             
-        case 6://应用内事件上报测试
+        case 6://应用内事件测试
             [self reportAppEventTest:testItem];
+            break;
+            
+        case 7://储蓄罐测试
+            [self piggyBankTest:testItem];
             break;
             
         default:
@@ -391,6 +397,12 @@
 
 - (void)reportAppEventTest:(NSString *)testItem {
     ReportAppEventViewController *testPage = [[ReportAppEventViewController alloc] init];
+    testPage.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:testPage animated:YES completion:nil];
+}
+
+- (void)piggyBankTest:(NSString *)testItem {
+    PiggyBankViewController *testPage = [[PiggyBankViewController alloc] init];
     testPage.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:testPage animated:YES completion:nil];
 }

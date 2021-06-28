@@ -3,7 +3,7 @@
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2021/1/18.
-//  Copyright © 2021 moodoo. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import "RichOXShareViewController.h"

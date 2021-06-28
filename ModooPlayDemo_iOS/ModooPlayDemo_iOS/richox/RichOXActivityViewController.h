@@ -3,7 +3,7 @@
 //  MoodooPlayDemo
 //
 //  Created by moodoo on 2020/6/22.
-//  Copyright © 2020 Moodoo. All rights reserved.
+//  Copyright © 2020 Moodoo Play. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

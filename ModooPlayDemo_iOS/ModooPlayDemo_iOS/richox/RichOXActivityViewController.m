@@ -1,9 +1,9 @@
 //
 //  RichOXActivityViewController.m
-//  MoodooPlay
+//  MoodooPlayDemo
 //
 //  Created by moodoo on 2020/6/22.
-//  Copyright © 2021 Moodoo. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import "RichOXActivityViewController.h"

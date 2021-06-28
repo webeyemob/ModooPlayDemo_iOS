@@ -1,9 +1,9 @@
 //
 //  ReportAppEventViewController.m
-//  RichOXDemo
+//  ModooPlayDemo
 //
-//  Created by zena.tang on 2021/4/30.
-//  Copyright © 2021 richox. All rights reserved.
+//  Created by moodoo on 2021/4/30.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import "ReportAppEventViewController.h"

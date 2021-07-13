@@ -39,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 初始化隐私 SDK
+    [PrivacyPolicyManager init:@"97ed11f7-01f8-493c-ba1a-03b91056ac1a"];
+    
     // 检查用户是否同意了《用户协议和隐私政策》，如果同意则直接初始化，否则需要弹窗征得用户同意
     if ([TGCenterSdk.sharedInstance isUserAgreePolicy]) {
         // 用户已同意，初始化
@@ -62,7 +65,7 @@
 - (void)initModooPlay {
     TGCInitConfig *initConfig = [[TGCInitConfig alloc] init];
     initConfig.debugMode = YES;
-    initConfig.appId = @"97ed11f7-01f8-493c-ba1a-03b91056ac1a"; //@"c3a34da9-9e52-44ca-a164-7fbfdfe40ec2"; // @"9dc8fab8-32d5-4d6f-b224-8f0a9b55547f";
+    initConfig.appId = @"97ed11f7-01f8-493c-ba1a-03b91056ac1a";
     initConfig.appleAppID = @"appleAppID";
     initConfig.umengAppKey = @"umeng_AppKey";
     initConfig.appsFlyerDevKey = @"appsFlyer_devKey";

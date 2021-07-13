@@ -8,7 +8,7 @@
 
 #import "PiggyBankViewController.h"
 #import "PiggyBankTableViewCell.h"
-@import RichOXBase;
+@import RichOXToolBox;
 #import <Masonry/Masonry.h>
 #import "macro.h"
 

@@ -71,6 +71,7 @@ target 'ModooPlayDemo_iOS' do
   pod 'RichOXStageStrategy_F'
   pod 'RichOXNormalStrategy'
   pod 'RichOXShare'
+  pod 'RichOXToolBox'
   
   pod 'AFNetworking'
   pod 'GoogleSignIn', '~> 4.4.0'

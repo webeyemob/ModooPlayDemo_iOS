@@ -282,7 +282,7 @@
 - (void) prepareData {
     if (self.stragegyIdText.text != nil && ![self.stragegyIdText.text isEqualToString:@""]) {
         if (self.stragegyInstance == nil || ![self.stragegyIdText.text isEqualToString:self.lastId]) {
-            self.stragegyInstance = [RichOXNormalStrategyInstance getNormalStrategy:self.stragegyIdText.text];
+            self.stragegyInstance = [RichOXNormalStrategyInstance getNormalStrategy:[self.stragegyIdText.text intValue]];
         }
 
         [self.stragegyInstance syncList:^(RichOXNormalStrategySetting *setting) {

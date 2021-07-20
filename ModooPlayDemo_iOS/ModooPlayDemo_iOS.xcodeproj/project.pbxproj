@@ -10,6 +10,10 @@
 		1415A93226896AF100DDCAD1 /* PiggyBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1415A93026896AF100DDCAD1 /* PiggyBankViewController.m */; };
 		1415A93526896B0000DDCAD1 /* PiggyBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */; };
 		1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */; };
+		146D207A26A6B90900A53E84 /* RichOXSectInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D207926A6B90900A53E84 /* RichOXSectInViewController.m */; };
+		146D207F26A6BBDF00A53E84 /* InviteAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D207B26A6BBDE00A53E84 /* InviteAwardViewController.m */; };
+		146D208026A6BBDF00A53E84 /* RichOXSectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D207C26A6BBDF00A53E84 /* RichOXSectViewController.m */; };
+		146D208326A6BE5300A53E84 /* InviteAwardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D208226A6BE5200A53E84 /* InviteAwardTableViewCell.m */; };
 		1493CF3F262D60FB00834B1A /* inviteAwardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF21262D60FB00834B1A /* inviteAwardObject.m */; };
 		1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF23262D60FB00834B1A /* ApprenticeViewController.m */; };
 		1493CF42262D60FB00834B1A /* MissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493CF2A262D60FB00834B1A /* MissionTableViewCell.m */; };
@@ -73,6 +77,14 @@
 		1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiggyBankTableViewCell.m; sourceTree = "<group>"; };
 		1443B9E9263C0F4E00D93130 /* ReportAppEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAppEventViewController.m; sourceTree = "<group>"; };
 		1443B9EA263C0F4E00D93130 /* ReportAppEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAppEventViewController.h; sourceTree = "<group>"; };
+		146D207826A6B90900A53E84 /* RichOXSectInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RichOXSectInViewController.h; sourceTree = "<group>"; };
+		146D207926A6B90900A53E84 /* RichOXSectInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RichOXSectInViewController.m; sourceTree = "<group>"; };
+		146D207B26A6BBDE00A53E84 /* InviteAwardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardViewController.m; sourceTree = "<group>"; };
+		146D207C26A6BBDF00A53E84 /* RichOXSectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RichOXSectViewController.m; sourceTree = "<group>"; };
+		146D207D26A6BBDF00A53E84 /* RichOXSectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RichOXSectViewController.h; sourceTree = "<group>"; };
+		146D207E26A6BBDF00A53E84 /* InviteAwardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardViewController.h; sourceTree = "<group>"; };
+		146D208126A6BE5200A53E84 /* InviteAwardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteAwardTableViewCell.h; sourceTree = "<group>"; };
+		146D208226A6BE5200A53E84 /* InviteAwardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteAwardTableViewCell.m; sourceTree = "<group>"; };
 		1493CF20262D60FB00834B1A /* ApprenticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprenticeViewController.h; sourceTree = "<group>"; };
 		1493CF21262D60FB00834B1A /* inviteAwardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteAwardObject.m; sourceTree = "<group>"; };
 		1493CF23262D60FB00834B1A /* ApprenticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprenticeViewController.m; sourceTree = "<group>"; };
@@ -202,10 +214,16 @@
 		1493CF1E262D60FB00834B1A /* sect */ = {
 			isa = PBXGroup;
 			children = (
+				146D207E26A6BBDF00A53E84 /* InviteAwardViewController.h */,
+				146D207B26A6BBDE00A53E84 /* InviteAwardViewController.m */,
+				146D207D26A6BBDF00A53E84 /* RichOXSectViewController.h */,
+				146D207C26A6BBDF00A53E84 /* RichOXSectViewController.m */,
 				1493CF20262D60FB00834B1A /* ApprenticeViewController.h */,
 				1493CF21262D60FB00834B1A /* inviteAwardObject.m */,
 				1493CF23262D60FB00834B1A /* ApprenticeViewController.m */,
 				1493CF24262D60FB00834B1A /* inviteAwardObject.h */,
+				146D207826A6B90900A53E84 /* RichOXSectInViewController.h */,
+				146D207926A6B90900A53E84 /* RichOXSectInViewController.m */,
 			);
 			path = sect;
 			sourceTree = "<group>";
@@ -213,6 +231,8 @@
 		1493CF28262D60FB00834B1A /* cellview */ = {
 			isa = PBXGroup;
 			children = (
+				146D208126A6BE5200A53E84 /* InviteAwardTableViewCell.h */,
+				146D208226A6BE5200A53E84 /* InviteAwardTableViewCell.m */,
 				1415A93326896B0000DDCAD1 /* PiggyBankTableViewCell.h */,
 				1415A93426896B0000DDCAD1 /* PiggyBankTableViewCell.m */,
 				1493CF29262D60FB00834B1A /* ApprenticeTableViewCell.h */,
@@ -543,12 +563,16 @@
 				1493CF4C262D60FB00834B1A /* RichOXNormalStrategyViewController.m in Sources */,
 				1493CF41262D60FB00834B1A /* ApprenticeViewController.m in Sources */,
 				1443B9EB263C0F4E00D93130 /* ReportAppEventViewController.m in Sources */,
+				146D208026A6BBDF00A53E84 /* RichOXSectViewController.m in Sources */,
 				14EF8C212653B00200190AF8 /* NewLoginViewController.m in Sources */,
 				14BD8303267DF19500286015 /* RichOXNormalStrategyCustomRuleViewController.m in Sources */,
+				146D207F26A6BBDF00A53E84 /* InviteAwardViewController.m in Sources */,
 				14EF8C222653B00200190AF8 /* WXLoginViewController.m in Sources */,
 				83A981F625CC272000D8C18B /* AntiAddictionViewController.m in Sources */,
 				83381ECA25B460ED00C19F5E /* AdTypeViewController.m in Sources */,
+				146D207A26A6B90900A53E84 /* RichOXSectInViewController.m in Sources */,
 				83381EC325B45EC500C19F5E /* RewardedVideoViewController.m in Sources */,
+				146D208326A6BE5300A53E84 /* InviteAwardTableViewCell.m in Sources */,
 				1493CF4B262D60FB00834B1A /* RichOXStageStrategyFViewController.m in Sources */,
 				1493CF49262D60FB00834B1A /* RichOXActivityViewController.m in Sources */,
 				834DBA2B25AF33270000CB60 /* UIView+Toast.m in Sources */,

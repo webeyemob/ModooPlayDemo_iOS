@@ -99,7 +99,7 @@
         NSMutableString *resultdata = [NSMutableString new];
         if ([list count] > 0) {
             for (RichOXSectInviteAwardsSettingData *data in list) {
-                inviteAwardObject *object = [[inviteAwardObject alloc] initWithCount:data.count awardType:data.awardType value:data.value];
+                inviteAwardObject *object = [[inviteAwardObject alloc] initWithCount:data.count awardType:data.awardType value:data.awardValue];
                 [self.inviteAwardList addObject:object];
                 
                 [resultdata appendString:[data description]];
@@ -109,7 +109,7 @@
         
         NSLog(@"******* getInviteAwardSetting ******* 测试成功: %@", resultdata);
         
-        [RichOXSectInfo getSectInfo:^(RichOXSectData * _Nonnull data) {
+        [RichOXSectAPI_F getSectInfo:^(RichOXSectData * _Nonnull data) {
             NSLog(@"******* getSectInfo ******* 测试成功: %@", [data description]);
             if (data.inviteAwardInfo != nil) {
                 for (inviteAwardObject *object in self.inviteAwardList) {

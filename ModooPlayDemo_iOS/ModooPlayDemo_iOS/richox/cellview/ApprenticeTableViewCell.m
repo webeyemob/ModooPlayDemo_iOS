@@ -62,7 +62,7 @@
 }
 
 - (void)getStarAction {
-    [RichOXSectInfo getContribution:self.apprenticeUid success:^(int star, int deltaContribution) {
+    [RichOXSectAPI getContribution:self.apprenticeUid success:^(int star, int deltaContribution) {
         NSLog(@"******* genContribution *****测试成功: contribution :%d, deltaContribution： %d", star, deltaContribution);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.contribution setText: [NSString stringWithFormat:@"总贡献%d", star]];

@@ -141,7 +141,9 @@
     
     [self getApprenticeList];
     
-    [self getInviteCount];
+    if (self.overSea) {
+        [self getInviteCount];
+    }
     
     [self getSectInfo];
 }
@@ -151,7 +153,7 @@
 }
 
 - (void)getInviteCount {
-    [RichOXSectInfo getInviteCount:0 onlyVerified:NO success:^(int inviteCount) {
+    [RichOXSectAPI getInviteCount:0 onlyVerified:NO success:^(int inviteCount) {
          dispatch_async(dispatch_get_main_queue(), ^{
             self.countLab.text = [NSString stringWithFormat:@"当前邀请的总人数:%d", inviteCount];
         });
@@ -162,47 +164,92 @@
 
 
 - (void) getAll {
-    [RichOXSectInfo getContribution:nil success:^(int star, int deltaContribution) {
-        NSLog(@"*******genContribution测试成功: contribution :%d, deltaContribution： %d", star, deltaContribution);
-        [self getApprenticeList];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-        self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d",star];
-        });
-        
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"*******genContribution测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
-    }];
+    if (self.overSea) {
+        [RichOXSectAPI getContribution:nil success:^(int star, int deltaContribution) {
+            NSLog(@"*******genContribution测试成功: contribution :%d, deltaContribution： %d", star, deltaContribution);
+            [self getApprenticeList];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d",star];
+            });
+            
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******genContribution测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else {
+        [RichOXSectAPI_F getContribution:nil success:^(int star, int deltaContribution) {
+            NSLog(@"*******genContribution测试成功: contribution :%d, deltaContribution： %d", star, deltaContribution);
+            [self getApprenticeList];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d",star];
+            });
+            
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******genContribution测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    }
 }
 
 - (void)getSectInfo {
-    [RichOXSectInfo getSectInfo:^(RichOXSectData * _Nonnull data) {
-        NSString *info = [NSString stringWithFormat:@"宗主ID: %@ %@验证 邀请弟子数: %d 已验证弟子数: %d 现金兑换次数: %d",data.masterUid, data.verified? @"已":@"未", data.inviteApprenticeCount, data.verifiedApprenticeCount, data.transformCount];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.masterIdLab.text = info;
-            self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d", data.contribution];
-        });
-        
-    } failure:^(NSError * _Nonnull error) {
+    if (self.overSea) {
+        [RichOXSectAPI getSectInfo:^(RichOXSectData * _Nonnull data) {
+            NSString *info = [NSString stringWithFormat:@"宗主ID: %@ %@验证 邀请弟子数: %d 已验证弟子数: %d 现金兑换次数: %d",data.masterUid, data.verified? @"已":@"未", data.inviteApprenticeCount, data.verifiedApprenticeCount, data.transformCount];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.masterIdLab.text = info;
+                self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d", data.contribution];
+            });
             
-    }];
+        } failure:^(NSError * _Nonnull error) {
+                
+        }];
+    } else {
+        [RichOXSectAPI_F getSectInfo:^(RichOXSectData * _Nonnull data) {
+            NSString *info = [NSString stringWithFormat:@"宗主ID: %@ %@验证 邀请弟子数: %d 已验证弟子数: %d 现金兑换次数: %d",data.masterUid, data.verified? @"已":@"未", data.inviteApprenticeCount, data.verifiedApprenticeCount, data.transformCount];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.masterIdLab.text = info;
+                self.contriLab.text = [NSString stringWithFormat:@"当前获得总贡献:%d", data.contribution];
+                self.countLab.text = [NSString stringWithFormat:@"当前邀请的总人数:%d", data.inviteApprenticeCount];
+            });
+            
+        } failure:^(NSError * _Nonnull error) {
+                
+        }];
+    }
 }
 
 - (void)getApprenticeList {
-    [RichOXSectInfo getApprenticeList:1 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
-        self.apprentice1List = data;
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
-    }];
-    
-    [RichOXSectInfo getApprenticeList:2 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
-        self.apprentice2List = data;
-        dispatch_async(dispatch_get_main_queue(), ^{
-        [self.apprenticeTab reloadData];
-        });
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
-    }];
+    if (self.overSea) {
+        [RichOXSectAPI getApprenticeList:1 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
+            self.apprentice1List = data;
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+        
+        [RichOXSectAPI getApprenticeList:2 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
+            self.apprentice2List = data;
+            dispatch_async(dispatch_get_main_queue(), ^{
+            [self.apprenticeTab reloadData];
+            });
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    } else {
+        [RichOXSectAPI_F getApprenticeList:1 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
+            self.apprentice1List = data;
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+        
+        [RichOXSectAPI_F getApprenticeList:2 pageSize:0 currentPage:0 success:^(RichOXSectApprenticeList * _Nonnull data) {
+            self.apprentice2List = data;
+            dispatch_async(dispatch_get_main_queue(), ^{
+            [self.apprenticeTab reloadData];
+            });
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getApprenticeList测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
+    }
 }
 
 #pragma mark <UITableViewDelegate>

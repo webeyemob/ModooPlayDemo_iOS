@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ApprenticeViewController : UIViewController
 
+@property(nonatomic) BOOL overSea;
+
 @end
 
 NS_ASSUME_NONNULL_END

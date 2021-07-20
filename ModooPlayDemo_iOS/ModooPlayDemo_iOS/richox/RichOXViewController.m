@@ -16,13 +16,13 @@
 #import "RichOXNormalStrategyViewController.h"
 
 #import "RichOXShareViewController.h"
-#import "ApprenticeViewController.h"
+#import "RichOXSectViewController.h"
+#import "RichOXSectInViewController.h"
 //#import "InviteAwardViewController.h"
 #import "RichOXMissionViewController.h"
 #import "ReportAppEventViewController.h"
 @import RichOXBase;
 @import RichOXFission_Moblink;
-@import RichOXSect;
 #import <Masonry/Masonry.h>
 #import "WXLoginViewController.h"
 #import "NewLoginViewController.h"
@@ -60,7 +60,7 @@
                      @{@"基础功能":@[@"游客注册",@"绑定社交账号",@"微信用户注册", @"获取激励任务",@"激励任务记录查询",@"今日金币获取信息查询",@"获取提现信息",@"提现请求",@"提现微信"]},
                      @{@"海外用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销"]},
                      @{@"分享":@[@"打开分享页面"]},
-                     @{@"宗门":@[@"获取弟子信息",@"产生贡献", @"获取宗门设置", @"获取邀请弟子排行"]},
+                     @{@"宗门":@[@"国内",@"海外"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
                      @{@"应用内事件": @[@"应用内事件"]},
                      @{@"储蓄罐": @[@"完成策略任务之后再进入该测试页面"]}
@@ -345,33 +345,16 @@
 }
 
 - (void)sectTest:(NSString *)testItem {
-    if ([testItem isEqualToString:@"获取弟子信息"]) {
-        ApprenticeViewController *vc = [[ApprenticeViewController alloc] init];
+    if ([testItem isEqualToString:@"国内"]) {
+        //todo 进入下一个页面登录社交账号
+        RichOXSectInViewController *vc = [[RichOXSectInViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:YES completion:nil];
-    } else if ([testItem isEqualToString:@"产生贡献"]) {
-        [RichOXSectInfo genContribution:0 success:^(int star) {
-            NSLog(@"*******genContribution测试成功: star :%d", star);
-        } failure:^(NSError * _Nonnull error) {
-            [self toastFailureInfo:@"genContribution" error:error];
-        }];
-    } else if ([testItem isEqualToString:@"获取宗门设置"]) {
-        [RichOXSectInfo getSetting:^(RichOXSectSettingData * _Nonnull data) {
-            NSLog(@"*******getSetting测试成功: data: %@", [data description]);
-        } failure:^(NSError * _Nonnull error) {
-            NSLog(@"*******getSetting测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
-        }];
-    } else if ([testItem isEqualToString:@"获取邀请弟子排行"]) {
-        [RichOXSectInfo getRankingList:^(NSArray <RichOXSectRankingObject *>*rankingList) {
-            NSMutableString *desc = [NSMutableString new];
-            for (RichOXSectRankingObject *item in rankingList){
-                [desc appendString:[item description]];
-                [desc appendString:@";"];
-            }
-            NSLog(@"*******getRankingList 测试成功: data: %@", desc);
-        } failure:^(NSError * _Nonnull error) {
-            NSLog(@"*******getRankingList 测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
-        }];
+    } else if ([testItem isEqualToString:@"海外"]) {
+        //todo 进入下一个页面登录社交账号
+        RichOXSectViewController *vc = [[RichOXSectViewController alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 

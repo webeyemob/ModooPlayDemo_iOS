@@ -1,9 +1,9 @@
 //
 //  ApprenticeViewController.h
-//  FissionSdkDemo
+//  ModooPlayDemo
 //
 //  Created by moodoo on 2021/1/18.
-//  Copyright © 2021 fissionsdk. All rights reserved.
+//  Copyright © 2021 Moodoo Play. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

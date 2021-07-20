@@ -346,7 +346,6 @@
 
 - (void)sectTest:(NSString *)testItem {
     if ([testItem isEqualToString:@"国内"]) {
-        //todo 进入下一个页面登录社交账号
         RichOXSectInViewController *vc = [[RichOXSectInViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:YES completion:nil];

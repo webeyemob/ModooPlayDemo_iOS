@@ -28,6 +28,7 @@
 #import "NewLoginViewController.h"
 #import "RichOXNormalStrategyCustomRuleViewController.h"
 #import "PiggyBankViewController.h"
+#import "ChatGroupViewController.h"
 
 #define WITHDRAW_TEST_MISSION_ID @""
 #define WXWITHDRAW_TEST_MISSION_ID @""
@@ -63,7 +64,7 @@
                      @{@"宗门":@[@"国内",@"海外"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
                      @{@"应用内事件": @[@"应用内事件"]},
-                     @{@"储蓄罐": @[@"完成策略任务之后再进入该测试页面"]}
+                     @{@"工具箱": @[@"储蓄罐（完成策略任务之后再进入该测试页面）", @"聊天群"]}
     ];
     
     UIView *header = [[UIView alloc] init];
@@ -213,8 +214,8 @@
             [self reportAppEventTest:testItem];
             break;
             
-        case 7://储蓄罐测试
-            [self piggyBankTest:testItem];
+        case 7://工具箱测试
+            [self ToolBoxTest:testItem];
             break;
             
         default:
@@ -383,10 +384,16 @@
     [self presentViewController:testPage animated:YES completion:nil];
 }
 
-- (void)piggyBankTest:(NSString *)testItem {
-    PiggyBankViewController *testPage = [[PiggyBankViewController alloc] init];
-    testPage.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:testPage animated:YES completion:nil];
+- (void)ToolBoxTest:(NSString *)testItem {
+    if ([testItem hasPrefix:@"储蓄罐"]) {
+        PiggyBankViewController *testPage = [[PiggyBankViewController alloc] init];
+        testPage.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:testPage animated:YES completion:nil];
+    } else if ([testItem isEqualToString:@"聊天群"]){
+        ChatGroupViewController *testPage = [[ChatGroupViewController alloc] init];
+        testPage.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:testPage animated:YES completion:nil];
+    }
 }
 
 @end

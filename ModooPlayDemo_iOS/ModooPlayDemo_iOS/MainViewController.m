@@ -16,7 +16,7 @@
 @import TGCenter;
 @import TGCWeChat;
 #import "WXApi.h"
-//@import TGCUdesk;
+@import TGCUdesk;
 @import EmbededSdk;
 @import RichOXFission_Moblink;
 @import RichOXBase;
@@ -213,7 +213,7 @@
 
 // 客服系统
 - (IBAction)udesk:(id)sender {
-    //[TGCUdeskHelper presentUdeskInViewController:self];
+    [TGCUdeskHelper presentUdeskInViewController:self];
 }
 
 @end

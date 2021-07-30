@@ -59,7 +59,7 @@ target 'ModooPlayDemo_iOS' do
   pod 'TGCWeChat'
   
   # 客服系统
-  pod 'TGCUdeskSDK'
+  pod 'TGCUdesk'
   
 
   # RichOX

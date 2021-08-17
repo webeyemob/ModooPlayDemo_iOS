@@ -65,7 +65,7 @@
 - (void)initModooPlay {
     TGCInitConfig *initConfig = [[TGCInitConfig alloc] init];
     initConfig.debugMode = YES;
-    initConfig.appId = @"97ed11f7-01f8-493c-ba1a-03b91056ac1a";
+    initConfig.appId = @"9dc8fab8-32d5-4d6f-b224-8f0a9b55547f";
     initConfig.appleAppID = @"appleAppID";
     initConfig.umengAppKey = @"umeng_AppKey";
     initConfig.appsFlyerDevKey = @"appsFlyer_devKey";

@@ -510,6 +510,14 @@ static const int kWXLogoImageHeight = 20;
                 }];
                 break;
                 
+            case RICHOX_BASE_BINDTYPE_WECHAT:
+                [RichOXUserManager registerByWeChat:openId wxCode:token success:^(RichOXUserObject * _Nonnull userData) {
+                    NSLog(@"*******registerByWeChat测试成功: bindtype is %ld, bind result is %@", bindType, [userData description]);
+                } failure:^(NSError * _Nonnull error) {
+                    NSLog(@"*******registerByWeChat测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+                }];
+                break;
+                
             default:
                 break;
         }

@@ -162,5 +162,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>RichOXFissionParameter</key>
+    <dict>
+        <key>AndroidPackageName</key>
+        <string>com.abc.1231</string>
+        <key>Domain</key>
+        <string>https://fissionsdk.page.link</string>
+        <key>ItunesId</key>
+        <string>1456785433333</string>
+    </dict>
+    <key>com.openinstall.APP_KEY</key>
+    <string>lpljir</string>
+    <key>MOBAppKey</key>
+    <string>32d2f07c11238</string>
+    <key>MOBAppSecret</key>
+    <string>d4af209081b12528ecbc3a1aae123456</string>
 </dict>
 </plist>

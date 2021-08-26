@@ -329,6 +329,12 @@
         [params addEntriesFromDictionary:param];
     }
     
+    //如果使用Firebase裂变还可以添加这些参数
+    [params setValue:@(YES) forKey:RICHOX_FISSION_CONFIG_NEEDPREVIEW_IN_PARAM_KEY];
+    [params setValue:@"kuailai" forKey:RICHOX_FISSION_CONFIG_SOCIALMETATAG_TITLE_IN_PARAM_KEY];
+    [params setValue:@"testtest" forKey:RICHOX_FISSION_CONFIG_SOCIALMETATAG_DESCRIPTIONTEXT_IN_PARAM_KEY];
+    [params setValue:@"http://image.png" forKey:RICHOX_FISSION_CONFIG_SOCIALMETATAG_IMAGEURL_IN_PARAM_KEY];
+    
     [RichOXFission genShareURL:self.hostText.text params:params success:^(NSString *url) {
         NSLog(@"******** genShareURL *********测试成功, share link is: %@",url);
         self.shareUrl = url;

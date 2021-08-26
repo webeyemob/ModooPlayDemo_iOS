@@ -11,7 +11,7 @@
 #import "Masonry.h"
 @import RichOXShare;
 #import "UIView+Toast.h"
-@import RichOXFission_Moblink;
+@import RichOXFissionSdk;
 @import RichOXBase;
 
 //#define WEBPAGE @"http://test-rox-static.ufile.ucloud.com.cn/test_share/index.html"

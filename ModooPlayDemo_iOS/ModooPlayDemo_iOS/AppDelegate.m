@@ -10,6 +10,7 @@
 @import TGCWeChat;
 #import <GoogleSignIn/GoogleSignIn.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import RichOXFissionSdk;
 
 @interface AppDelegate ()
 
@@ -32,6 +33,8 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     if ([url.absoluteString hasPrefix:@"wx"]){
         return [TGCWeChatHelper.sharedInstance handleOpenURL:url];
+    } else {
+        [RichOXFission fetchDynamicLinkFromFirebase:url];
     }
     return YES;
 }
@@ -39,6 +42,8 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([url.absoluteString hasPrefix:@"wx"]){
         return [TGCWeChatHelper.sharedInstance handleOpenURL:url];
+    } else {
+        [RichOXFission fetchDynamicLinkFromFirebase:url];
     }
     return YES;
 }

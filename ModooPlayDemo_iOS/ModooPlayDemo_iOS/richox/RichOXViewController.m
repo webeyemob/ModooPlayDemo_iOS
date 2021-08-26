@@ -22,7 +22,7 @@
 #import "RichOXMissionViewController.h"
 #import "ReportAppEventViewController.h"
 @import RichOXBase;
-@import RichOXFission_Moblink;
+@import RichOXFissionSdk;
 #import <Masonry/Masonry.h>
 #import "WXLoginViewController.h"
 #import "NewLoginViewController.h"

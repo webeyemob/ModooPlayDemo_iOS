@@ -65,8 +65,12 @@ target 'ModooPlayDemo_iOS' do
   # RichOX
   pod 'RichOXBase'
   pod 'RichOX'
+  pod 'RichOXFissionLite'
   pod 'RichOXSect'
-  pod 'RichOXFission_Moblink'
+  pod 'RichOXFission_Firebase'
+  #pod 'RichOXFission_Moblink'
+  #pod 'RichOXFission_OpenInstall'
+  pod 'RichOXFissionSdk'
   pod 'RichOXStageStrategy'
   pod 'RichOXStageStrategy_F'
   pod 'RichOXNormalStrategy'

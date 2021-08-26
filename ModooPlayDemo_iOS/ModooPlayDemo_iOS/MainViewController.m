@@ -18,7 +18,7 @@
 #import "WXApi.h"
 @import TGCUdesk;
 @import EmbededSdk;
-@import RichOXFission_Moblink;
+@import RichOXFissionSdk;
 @import RichOXBase;
 
 @interface MainViewController () <TGCWeChatLoginDelegate, RichOXFissionDelegate>

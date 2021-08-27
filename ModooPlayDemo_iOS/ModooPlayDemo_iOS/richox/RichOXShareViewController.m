@@ -307,6 +307,7 @@
     }];
     
     self.popView.hidden = YES;
+    NSLog(@"SDK info: %@", [RichOXFission getAdapterSdkVersionInfo]);
 }
 
 - (void) closePage {

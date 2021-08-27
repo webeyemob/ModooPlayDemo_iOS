@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "macro.h"
 #import "UIView+Toast.h"
+@import RichOXToolBox;
 
 @interface ReportAppEventViewController () <UITextFieldDelegate>
 
@@ -167,6 +168,36 @@
         make.width.equalTo(@(150));
         make.height.equalTo(@(30));
     }];
+    
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:saveBtn];
+    [saveBtn setTitle:@"存储用户私有数据" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor colorWithRed:135.0/255.0 green:216.0/255.0 blue:80.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
+    [saveBtn setTitleColor:[UIColor lightGrayColor]  forState:UIControlStateDisabled];
+    [saveBtn addTarget:self action:@selector(savePrivacyData) forControlEvents:UIControlEventTouchUpInside];
+    
+    [saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(getEventValueBtn.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(@(150));
+        make.height.equalTo(@(30));
+    }];
+    
+    UIButton *queryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:queryBtn];
+    [queryBtn setTitle:@"获取事件值" forState:UIControlStateNormal];
+    [queryBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [queryBtn setTitleColor:[UIColor colorWithRed:135.0/255.0 green:216.0/255.0 blue:80.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
+    [queryBtn setTitleColor:[UIColor lightGrayColor]  forState:UIControlStateDisabled];
+    [queryBtn addTarget:self action:@selector(queryPrivacyData) forControlEvents:UIControlEventTouchUpInside];
+    
+    [queryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(saveBtn.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(@(150));
+        make.height.equalTo(@(30));
+    }];
 }
 
 - (void) closePage {
@@ -227,6 +258,45 @@
     }];
     
 }
+
+- (void)savePrivacyData {
+    if (self.nameText.text == nil || [self.nameText.text isEqualToString:@""] || self.valueText.text == nil || [self.valueText.text isEqualToString:@""]) {
+        return;
+    }
+    
+    [RichOXToolKit saveUserPrivacyKey:self.nameText.text value:self.valueText.text success: ^() {
+        NSLog(@"saveUserPrivacyKey success");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:@"success" duration:5.0 position:CSToastPositionCenter];
+        });
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"saveUserPrivacyKey: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:@"failed" duration:5.0 position:CSToastPositionCenter];
+        });
+    }];
+}
+
+- (void)queryPrivacyData {
+    if (self.nameText.text == nil || [self.nameText.text isEqualToString:@""]) {
+        return;
+    }
+    
+    [RichOXToolKit queryUserPrivacyKey:self.nameText.text success: ^(RichOXUserPrivacyData *userData) {
+        NSLog(@"queryUserPrivacyKey success, userData: %@", [userData description]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:[userData description] duration:5.0 position:CSToastPositionCenter];
+        });
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"queryUserPrivacyKey: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:@"failed" duration:5.0 position:CSToastPositionCenter];
+        });
+    }];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

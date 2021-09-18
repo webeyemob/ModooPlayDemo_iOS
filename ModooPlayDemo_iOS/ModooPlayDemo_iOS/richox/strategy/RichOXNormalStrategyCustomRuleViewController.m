@@ -396,11 +396,7 @@
         
         [cell setName:item.packageId progress:progress packetId:item.packageId status:0 block:^() {
                 RichOXWithdrawInfo *info = [[RichOXWithdrawInfo alloc] initWithPayremark:@"通用红包提现"];
-                if (item.wdAmountType != nil && [item.wdAmountType isEqualToString:@"range"]) {
-                    info.withdrawAmount = item.maxCash;
-                }
-                //info.withdrawWay = @"11101"; //外部支付
-                //info.extParam = @{@"td":@"111", @"aaa": @(10)};
+
                 [self.stragegyInstance withdraw:item.packageId info:info success:^(RichOXNormalStrategyWithdrawResult *result){
                     self.currentAssets = result.assetStatus;
                     dispatch_async(dispatch_get_main_queue(), ^{

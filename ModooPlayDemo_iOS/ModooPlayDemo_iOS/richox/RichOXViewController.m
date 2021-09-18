@@ -58,10 +58,10 @@
     // Do any additional setup after loading the view
     _sortedArray = @[@{
                          @"H5活动": @[@"活动测试页面"]},
-                     @{@"基础功能":@[@"游客注册",@"绑定社交账号",@"微信用户注册", @"获取激励任务",@"激励任务记录查询",@"今日金币获取信息查询",@"获取提现信息",@"提现请求",@"提现微信"]},
-                     @{@"海外用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销"]},
+                     @{@"2.0用户":@[@"游客注册",@"绑定社交账号",@"微信用户注册", @"获取激励任务",@"激励任务记录查询",@"今日金币获取信息查询",@"获取提现信息",@"提现请求",@"提现微信"]},
+                     @{@"3.0用户":@[@"游客注册",@"绑定社交账号",@"获取用户信息",@"获取邀请人基本信息",@"用户注销",@"获取外部支付信息"]},
                      @{@"分享":@[@"打开分享页面"]},
-                     @{@"宗门":@[@"国内",@"海外"]},
+                     @{@"宗门":@[@"2.0平台",@"3.0平台"]},
                      @{@"策略": @[@"阶梯策略测试页面(F)", @"阶梯策略测试页面", @"通用策略测试页面", @"自定义规则发放奖励"]},
                      @{@"应用内事件": @[@"应用内事件"]},
                      @{@"工具箱": @[@"储蓄罐（完成策略任务之后再进入该测试页面）", @"聊天群"]}
@@ -190,11 +190,11 @@
             [self activityTest:testItem];
             break;
             
-        case 1://基础测试
+        case 1://2.0平台用户测试
             [self baseTest:testItem];
             break;
             
-        case 2://海外用户测试
+        case 2://3.0平台用户测试
             [self userNewAPITest:testItem];
             break;
         
@@ -335,6 +335,12 @@
         } failure:^(NSError * _Nonnull error) {
             NSLog(@"*******logOutUser测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
         }];
+    } else if ([testItem isEqualToString:@"获取外部支付信息"]) {
+        [RichOXUserManager getUserExternalInfo:^(RichOXUserExternalInfo * _Nonnull data) {
+            NSLog(@"*******getUserExternalInfo 测试成功 info: %@", [data description]);
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"*******getUserExternalInfo测试失败: errorCode: %ld, message:%@", error.code, error.localizedDescription);
+        }];
     }
 }
 
@@ -346,11 +352,11 @@
 }
 
 - (void)sectTest:(NSString *)testItem {
-    if ([testItem isEqualToString:@"国内"]) {
+    if ([testItem isEqualToString:@"2.0平台"]) {
         RichOXSectInViewController *vc = [[RichOXSectInViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:YES completion:nil];
-    } else if ([testItem isEqualToString:@"海外"]) {
+    } else if ([testItem isEqualToString:@"3.0平台"]) {
         //todo 进入下一个页面登录社交账号
         RichOXSectViewController *vc = [[RichOXSectViewController alloc] init];
         vc.modalPresentationStyle = UIModalPresentationFullScreen;

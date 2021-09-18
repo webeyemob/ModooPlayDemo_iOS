@@ -186,7 +186,7 @@
     
     UIButton *queryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:queryBtn];
-    [queryBtn setTitle:@"获取事件值" forState:UIControlStateNormal];
+    [queryBtn setTitle:@"获取单个事件值" forState:UIControlStateNormal];
     [queryBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [queryBtn setTitleColor:[UIColor colorWithRed:135.0/255.0 green:216.0/255.0 blue:80.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
     [queryBtn setTitleColor:[UIColor lightGrayColor]  forState:UIControlStateDisabled];
@@ -194,6 +194,21 @@
     
     [queryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(saveBtn.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(@(150));
+        make.height.equalTo(@(30));
+    }];
+    
+    UIButton *queryKeysBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:queryBtn];
+    [queryKeysBtn setTitle:@"获取多个事件值" forState:UIControlStateNormal];
+    [queryKeysBtn setTitleColor:[UIColor colorWithRed:28.0/255.0 green:147.0/255.0 blue:243.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [queryKeysBtn setTitleColor:[UIColor colorWithRed:135.0/255.0 green:216.0/255.0 blue:80.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
+    [queryKeysBtn setTitleColor:[UIColor lightGrayColor]  forState:UIControlStateDisabled];
+    [queryKeysBtn addTarget:self action:@selector(queryPrivacyDatas) forControlEvents:UIControlEventTouchUpInside];
+    
+    [queryKeysBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(queryBtn.mas_bottom).offset(20);
         make.centerX.equalTo(self.view);
         make.width.equalTo(@(150));
         make.height.equalTo(@(30));
@@ -293,7 +308,32 @@
             [self.view makeToast:@"failed" duration:5.0 position:CSToastPositionCenter];
         });
     }];
+}
+
+- (void)queryPrivacyDatas {
+    if (self.nameText.text == nil || [self.nameText.text isEqualToString:@""]) {
+        return;
+    }
     
+    NSArray *keys = [self.nameText.text componentsSeparatedByString:@";"];
+
+    [RichOXToolKit queryUserPrivacyKeys:keys success: ^(NSArray <RichOXUserPrivacyData *> *userDatas) {
+        NSMutableString *result = [NSMutableString new];
+        [result appendString:@"["];
+        if (userDatas != nil) {
+            for (RichOXUserPrivacyData *data in userDatas) {
+                [result appendString:[data description]];
+                [result appendString:@","];
+            }
+        }
+        [result appendString:@"]"];
+        NSLog(@"queryUserPrivacyKey success, userDatas: %@", result);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:result duration:5.0 position:CSToastPositionCenter];
+        });
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"queryUserPrivacyKey: %@", error);
+    }];
 }
 
 

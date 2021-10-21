@@ -88,14 +88,14 @@
     if (!useAdLoader) {
         if (self.splashAd == nil) {
             self.splashAd = [[TXADSplashAd alloc] initWithAdUnitId:self.adUnitID
-                                                          uiWindow:[UIApplication sharedApplication].keyWindow ];
+                                                          uiWindow:[[UIApplication sharedApplication].windows lastObject]];
             self.splashAd.delegate = self;
         }
         [self.splashAd loadAd];
     } else {
-        TXADSplashAd *ad = [TXADAdLoader getSplashAd:self.adUnitID uiWindow:[UIApplication sharedApplication].keyWindow];
+        TXADSplashAd *ad = [TXADAdLoader getSplashAd:self.adUnitID uiWindow:[[UIApplication sharedApplication].windows lastObject]];
         ad.delegate = self;
-        [TXADAdLoader loadSplashAd:self.adUnitID uiWindow:[UIApplication sharedApplication].keyWindow];
+        [TXADAdLoader loadSplashAd:self.adUnitID uiWindow:[[UIApplication sharedApplication].windows lastObject]];
     }
 }
 

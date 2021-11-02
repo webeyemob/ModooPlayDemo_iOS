@@ -48,6 +48,15 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if ([url.absoluteString hasPrefix:@"wx"]){
+        return [TGCWeChatHelper.sharedInstance handleOpenURL:url];
+    } else {
+        [RichOXFission fetchDynamicLinkFromFirebase:url];
+    }
+    return YES;
+}
+
 
 #pragma mark - UISceneSession lifecycle
 
